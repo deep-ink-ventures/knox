@@ -1,16 +1,12 @@
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-inner container">
-    <p class="hero-badge rise" style="--rise: 1">
-      <span class="badge-dot" aria-hidden="true"></span>
-      Workshop-Präsentation · 24. Januar 2026 · eti Berlin
-    </p>
-    <h1 id="hero-title" class="hero-title rise" style="--rise: 2">KNOX</h1>
-    <p class="hero-sub eyebrow rise" style="--rise: 3">Das Musical</p>
-    <p class="hero-credits rise" style="--rise: 4">
+    <h1 id="hero-title" class="hero-title rise" style="--rise: 1">KNOX</h1>
+    <p class="hero-sub eyebrow rise" style="--rise: 2">Das Musical</p>
+    <p class="hero-credits rise" style="--rise: 3">
       Humorvoll, herzergreifend, galaktisch – von <strong>Eva Strasser</strong> (Buch &amp; Lyrics)
       und <strong>Stephen Sundberg</strong> (Musik).
     </p>
-    <nav class="hero-nav rise" style="--rise: 5" aria-label="Bereiche der Seite">
+    <nav class="hero-nav rise" style="--rise: 4" aria-label="Bereiche der Seite">
       <a class="btn btn-primary" href="#videos">Videos</a>
       <a class="btn btn-ghost" href="#synopsis">Synopsis</a>
       <a class="btn btn-ghost" href="#vita">Vita</a>
@@ -18,7 +14,7 @@
     </nav>
   </div>
 
-  <a class="scroll-cue rise" style="--rise: 6" href="#videos" aria-label="Zu den Videos scrollen">
+  <a class="scroll-cue rise" style="--rise: 5" href="#videos" aria-label="Zu den Videos scrollen">
     <span aria-hidden="true">↓</span>
   </a>
 </section>
@@ -76,41 +72,7 @@
     margin-block: auto;
   }
 
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7em;
-    padding: 0.55em 1.3em;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: rgba(10, 19, 34, 0.6);
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    color: var(--ink-dim);
-  }
-
-  .badge-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--amber);
-    box-shadow: 0 0 10px rgba(244, 184, 96, 0.8);
-  }
-
-  @keyframes badge-pulse {
-    50% {
-      opacity: 0.35;
-    }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .badge-dot {
-      animation: badge-pulse 2.4s ease-in-out infinite;
-    }
-  }
-
   .hero-title {
-    margin-top: 1.6rem;
     font-size: var(--text-hero);
     font-weight: 800;
     line-height: 0.95;
