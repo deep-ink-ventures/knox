@@ -1,17 +1,19 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 
+/* Vorschaubilder liegen selbst gehostet unter public/assets/img/videos/ —
+   beim Seitenaufruf fließen keine Daten an YouTube/Google (siehe Datenschutzerklärung). */
 const videos = [
-  ['Intro + Galaxy', 'https://youtu.be/F3CJauQOisY'],
-  ['Die Sterne da oben', 'https://youtu.be/lwCRC3jmIHc'],
-  ['Disco Junge', 'https://youtu.be/nw1X_ANIHbo'],
-  ['Er gehört in eine Einrichtung', 'https://youtu.be/6TLG4w3JcXQ'],
-  ['Revolution', 'https://youtu.be/XJW7WJGbhFg'],
-  ['Pilot', 'https://youtu.be/Yf5rLLrl2sk'],
-  ['Wie sieht der denn aus', 'https://youtu.be/c1PoZpgBitM'],
-  ['Die Zukunft', 'https://youtu.be/WJ28C0mwOvE'],
-  ['Unser Traum', 'https://youtu.be/qbgcSipZgYE'],
-  ['Galaxie', 'https://youtu.be/TAE-4YWWA9Y'],
+  { title: 'Intro + Galaxy', url: 'https://youtu.be/F3CJauQOisY', slug: 'intro-galaxy' },
+  { title: 'Die Sterne da oben', url: 'https://youtu.be/lwCRC3jmIHc', slug: 'die-sterne-da-oben' },
+  { title: 'Disco Junge', url: 'https://youtu.be/nw1X_ANIHbo', slug: 'disco-junge' },
+  { title: 'Er gehört in eine Einrichtung', url: 'https://youtu.be/6TLG4w3JcXQ', slug: 'er-gehoert-in-eine-einrichtung' },
+  { title: 'Revolution', url: 'https://youtu.be/XJW7WJGbhFg', slug: 'revolution' },
+  { title: 'Pilot', url: 'https://youtu.be/Yf5rLLrl2sk', slug: 'pilot' },
+  { title: 'Wie sieht der denn aus', url: 'https://youtu.be/c1PoZpgBitM', slug: 'wie-sieht-der-denn-aus' },
+  { title: 'Die Zukunft', url: 'https://youtu.be/WJ28C0mwOvE', slug: 'die-zukunft' },
+  { title: 'Unser Traum', url: 'https://youtu.be/qbgcSipZgYE', slug: 'unser-traum' },
+  { title: 'Galaxie', url: 'https://youtu.be/TAE-4YWWA9Y', slug: 'galaxie' },
 ];
 ---
 
@@ -33,23 +35,34 @@ const videos = [
       <span id="videos-heading">Songs voll Wumms, Herz und Funkeln</span>
     </SectionHeading>
 
-    <ol class="tracks" role="list">
+    <ul class="video-grid" role="list">
       {
-        videos.map(([title, url], index) => (
+        videos.map(({ title, url, slug }, index) => (
           <li data-reveal style={`--reveal-delay: ${(index % 5) * 70}ms`}>
-            <a class="track" href={url} target="_blank" rel="noopener">
-              <span class="track-num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-              <span class="track-title">„{title}“</span>
-              <span class="track-bars" aria-hidden="true">
-                <i /><i /><i /><i /><i />
+            <a
+              class="video-card panel"
+              href={url}
+              target="_blank"
+              rel="noopener"
+              aria-label={`„${title}“ bei YouTube ansehen (öffnet in neuem Tab)`}
+            >
+              <span class="video-thumb">
+                <img src={`/assets/img/videos/${slug}.webp`} width="640" height="360" alt="" loading="lazy" />
+                <span class="video-play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M8 5.5 L18.5 12 L8 18.5 Z" fill="currentColor" />
+                  </svg>
+                </span>
               </span>
-              <span class="track-go" aria-hidden="true">↗</span>
-              <span class="sr-only">– Video bei YouTube ansehen (öffnet in neuem Tab)</span>
+              <span class="video-caption">
+                <span class="video-num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                <span class="video-title">{title}</span>
+              </span>
             </a>
           </li>
         ))
       }
-    </ol>
+    </ul>
 
     <p class="videos-note" data-reveal>
       Alle Videos öffnen bei YouTube in einem neuen Tab. Demoaufnahmen und Noten gern
@@ -66,121 +79,108 @@ const videos = [
     width: clamp(80px, 12vw, 170px);
   }
 
-  .tracks {
+  .video-grid {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: clamp(2rem, 4vw, 4rem);
-  }
-
-  .tracks li {
-    border-bottom: 1px solid var(--line);
-  }
-
-  /* Raster füllt zeilenweise: die ersten beiden Einträge bilden die oberste Zeile */
-  .tracks li:nth-child(-n + 2) {
-    border-top: 1px solid var(--line);
-  }
-
-  .track {
-    display: flex;
-    align-items: baseline;
+    grid-template-columns: 1fr;
     gap: 1.2rem;
-    padding: 1.25rem 0.5rem;
+  }
+
+  @media (min-width: 520px) {
+    .video-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .video-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  .video-card {
+    display: block;
+    overflow: clip;
     text-decoration: none;
-    transition: background-color var(--duration-fast) var(--ease-out);
-  }
-
-  .track:hover {
-    background: rgba(127, 220, 242, 0.05);
-  }
-
-  .track-num {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(1.3rem, 1.1rem + 1vw, 1.9rem);
-    color: transparent;
-    -webkit-text-stroke: 1px var(--line-strong);
-    min-width: 2.2ch;
-  }
-
-  .track-title {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.15rem);
-    color: var(--ink);
-  }
-
-  .track-go {
-    color: var(--cyan);
-    font-size: 1rem;
-    opacity: 0;
-    translate: -4px 2px;
-    transition:
-      opacity var(--duration-fast) var(--ease-out),
-      translate var(--duration-fast) var(--ease-out);
-  }
-
-  .track:hover .track-go,
-  .track:focus-visible .track-go {
-    opacity: 1;
-    translate: 0 0;
-  }
-
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-
-  /* Equalizer-Balken, animieren beim Hover über der Zeile */
-  .track-bars {
-    margin-left: auto;
-    display: flex;
-    align-items: flex-end;
-    gap: 3px;
-    height: 1.1rem;
-  }
-
-  .track-bars i {
-    width: 3px;
-    height: 100%;
-    background: var(--cyan);
-    opacity: 0.35;
-    transform: scaleY(0.25);
-    transform-origin: bottom;
     transition:
       transform var(--duration) var(--ease-out),
-      opacity var(--duration) var(--ease-out);
+      border-color var(--duration) var(--ease-out),
+      box-shadow var(--duration) var(--ease-out);
   }
 
-  @keyframes equalize {
-    from {
-      transform: scaleY(0.2);
-    }
-    to {
-      transform: scaleY(1);
-    }
+  .video-card:hover,
+  .video-card:focus-visible {
+    transform: translateY(-5px);
+    border-color: var(--line-strong);
+    box-shadow: 0 16px 44px -18px rgba(127, 220, 242, 0.35);
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .track:hover .track-bars i {
-      opacity: 0.9;
-      animation: equalize 0.5s ease-in-out infinite alternate;
-    }
+  .video-thumb {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: clip;
+  }
 
-    .track:hover .track-bars i:nth-child(2n) {
-      animation-duration: 0.34s;
-    }
+  .video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
 
-    .track:hover .track-bars i:nth-child(3n) {
-      animation-duration: 0.62s;
-    }
+  .video-card:hover .video-thumb img {
+    transform: scale(1.05);
+  }
+
+  .video-play {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--cyan-bright);
+  }
+
+  .video-play svg {
+    box-sizing: content-box;
+    padding: 0.7em;
+    border-radius: 50%;
+    background: rgba(4, 7, 15, 0.62);
+    border: 1px solid var(--line-strong);
+    transition:
+      transform var(--duration-fast) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .video-card:hover .video-play svg {
+    transform: scale(1.12);
+    background: rgba(4, 7, 15, 0.8);
+  }
+
+  .video-caption {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .video-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--line-strong);
+  }
+
+  .video-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.82rem;
+    line-height: 1.35;
+    color: var(--ink);
   }
 
   .videos-note {
@@ -190,14 +190,6 @@ const videos = [
   }
 
   @media (max-width: 880px) {
-    .tracks {
-      grid-template-columns: 1fr;
-    }
-
-    .tracks li:nth-child(2) {
-      border-top: none;
-    }
-
     .videos-planet {
       top: 1rem;
       width: 72px;

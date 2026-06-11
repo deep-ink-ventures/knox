@@ -45,9 +45,11 @@ src/
 └── styles/                      # tokens.css (Design-Tokens), global.css
 ```
 
-Die Song-Videos sind bewusst **reine YouTube-Links** (kein Embed): dadurch fließen beim
-Seitenaufruf keine Daten an Google und es ist kein Cookie-Banner nötig. Sollen Videos eingebettet
-werden, braucht es eine Zwei-Klick-Lösung plus erweiterte Datenschutzerklärung.
+Die Song-Videos sind eine Galerie aus **selbst gehosteten Vorschaubildern**
+(`public/assets/img/videos/`, beim Build von YouTube geladen und konvertiert), die als
+**reine Links** zu YouTube führen (kein Embed): dadurch fließen beim Seitenaufruf keine Daten an
+Google und es ist kein Cookie-Banner nötig. Sollen Videos eingebettet werden, braucht es eine
+Zwei-Klick-Lösung plus erweiterte Datenschutzerklärung.
 
 ## Assets
 
