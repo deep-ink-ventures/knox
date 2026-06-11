@@ -37,12 +37,12 @@
     inset: 0;
     z-index: -1;
     background-image:
-      radial-gradient(58rem 32rem at 50% 58%, rgba(4, 7, 15, 0.55), transparent 70%),
+      radial-gradient(58rem 32rem at 50% 58%, color-mix(in srgb, var(--bg) 55%, transparent), transparent 70%),
       linear-gradient(
         to bottom,
-        rgba(4, 7, 15, 0.8),
-        rgba(4, 7, 15, 0.55) 42%,
-        rgba(4, 7, 15, 0.84) 80%,
+        color-mix(in srgb, var(--bg) 80%, transparent),
+        color-mix(in srgb, var(--bg) 55%, transparent) 42%,
+        color-mix(in srgb, var(--bg) 84%, transparent) 80%,
         var(--bg) 100%
       ),
       url('/assets/img/hero-bg.webp');
@@ -53,12 +53,12 @@
   @media (max-width: 720px) {
     .hero::before {
       background-image:
-        radial-gradient(30rem 24rem at 50% 56%, rgba(4, 7, 15, 0.55), transparent 72%),
+        radial-gradient(30rem 24rem at 50% 56%, color-mix(in srgb, var(--bg) 55%, transparent), transparent 72%),
         linear-gradient(
           to bottom,
-          rgba(4, 7, 15, 0.8),
-          rgba(4, 7, 15, 0.58) 42%,
-          rgba(4, 7, 15, 0.86) 80%,
+          color-mix(in srgb, var(--bg) 80%, transparent),
+          color-mix(in srgb, var(--bg) 58%, transparent) 42%,
+          color-mix(in srgb, var(--bg) 86%, transparent) 80%,
           var(--bg) 100%
         ),
         url('/assets/img/hero-bg-800.webp');
@@ -114,7 +114,7 @@
     place-items: center;
     border: 1px solid var(--line-strong);
     border-radius: 50%;
-    background: rgba(4, 7, 15, 0.45);
+    background: color-mix(in srgb, var(--bg) 45%, transparent);
     color: var(--cyan);
     font-size: 1.1rem;
     text-decoration: none;
@@ -125,7 +125,7 @@
 
   .scroll-cue:hover {
     border-color: var(--cyan);
-    background: rgba(127, 220, 242, 0.08);
+    background: color-mix(in srgb, var(--cyan) 8%, transparent);
   }
 
   @keyframes cue-bob {

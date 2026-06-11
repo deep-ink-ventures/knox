@@ -70,6 +70,7 @@
 
     const render = (time: number, animate: boolean) => {
       ctx.clearRect(0, 0, width, height);
+      // Canvas kennt keine CSS-Variablen — Sternfarben bewusst als Literale (Basis: --cyan-bright)
       ctx.fillStyle = 'rgb(214, 240, 250)';
       ctx.strokeStyle = 'rgba(168, 232, 245, 0.7)';
       ctx.lineWidth = 0.6;
