@@ -19,8 +19,9 @@ Deploy z. B. mit `vercel` (statisches Astro-Projekt, keine Server-Funktionen nö
 
 ## Stand der Inhalte
 
-Erledigt: Kontakt-E-Mail (`eva.strasser@gmail.com`), Impressum & Datenschutzerklärung, Domain
-(`https://knox-das-musical.de` als `SITE_URL` in `Base.astro`), `noindex` entfernt.
+Erledigt: Kontakt-E-Mail (`kontakt@knox-das-musical.de`, ImprovMX-Weiterleitung), Impressum &
+Datenschutzerklärung, Domain (`https://www.knox-das-musical.de` als `SITE_URL` in `Base.astro`,
+www ist die primäre Domain bei Vercel), `noindex` entfernt.
 
 Noch offen / Entwürfe:
 
