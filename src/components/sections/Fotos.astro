@@ -1,12 +1,19 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 
-/* Bis echte Bühnenfotos vorliegen: Artwork-Galerie aus der Welt von KNOX. */
-const artworks = [
-  ['planet-hex', 'Illustration einer kugelförmigen Raumstation mit goldenen Sechsecken'],
-  ['planet-ring', 'Illustration einer ringförmigen Raumstation im All'],
-  ['planet-spiral', 'Illustration einer spiralförmigen Raumstation im All'],
-  ['planet-earth', 'Illustration der Erde aus dem Weltraum'],
+/* Standbilder aus den Song-Videos der Workshop-Präsentation,
+   selbst gehostet unter public/assets/img/videos/. */
+const stills = [
+  ['intro-galaxy', 'Intro + Galaxy'],
+  ['die-sterne-da-oben', 'Die Sterne da oben'],
+  ['disco-junge', 'Disco Junge'],
+  ['er-gehoert-in-eine-einrichtung', 'Er gehört in eine Einrichtung'],
+  ['revolution', 'Revolution'],
+  ['pilot', 'Pilot'],
+  ['wie-sieht-der-denn-aus', 'Wie sieht der denn aus'],
+  ['die-zukunft', 'Die Zukunft'],
+  ['unser-traum', 'Unser Traum'],
+  ['galaxie', 'Galaxie'],
 ];
 ---
 
@@ -17,15 +24,21 @@ const artworks = [
     </SectionHeading>
 
     <p class="fotos-lead" data-reveal>
-      Bühnenfotos der Workshop-Präsentation folgen in Kürze – bis dahin ein Blick in Schnaizers
-      Galaxy.
+      Eindrücke von der Workshop-Präsentation am 24. Januar 2026 im eti Berlin – Standbilder aus
+      den Song-Videos.
     </p>
 
     <ul class="fotos-grid" role="list">
       {
-        artworks.map(([name, alt], index) => (
-          <li class="foto panel" data-reveal style={`--reveal-delay: ${index * 80}ms`}>
-            <img src={`/assets/img/${name}.webp`} width="480" height="480" alt={alt} loading="lazy" />
+        stills.map(([slug, title], index) => (
+          <li class="foto panel" data-reveal style={`--reveal-delay: ${(index % 2) * 90}ms`}>
+            <img
+              src={`/assets/img/videos/${slug}.webp`}
+              width="640"
+              height="360"
+              alt={`Szene aus der Workshop-Präsentation: „${title}“`}
+              loading="lazy"
+            />
           </li>
         ))
       }
@@ -45,36 +58,30 @@ const artworks = [
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 1.2rem;
+  }
+
+  @media (min-width: 560px) {
+    .fotos-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   .foto {
     overflow: clip;
-    transition:
-      transform var(--duration) var(--ease-out),
-      border-color var(--duration) var(--ease-out);
-  }
-
-  .foto:hover {
-    transform: translateY(-5px);
-    border-color: var(--line-strong);
   }
 
   .foto img {
     width: 100%;
     height: auto;
     display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
     transition: transform var(--duration-slow) var(--ease-out);
   }
 
   .foto:hover img {
-    transform: scale(1.045);
-  }
-
-  @media (max-width: 720px) {
-    .fotos-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    transform: scale(1.035);
   }
 </style>
