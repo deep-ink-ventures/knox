@@ -1,0 +1,196 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-inner container">
+    <p class="hero-badge rise" style="--rise: 1">
+      <span class="badge-dot" aria-hidden="true"></span>
+      Workshop-Präsentation · 24. Januar 2026 · eti Berlin
+    </p>
+    <h1 id="hero-title" class="hero-title rise" style="--rise: 2">KNOX</h1>
+    <p class="hero-sub eyebrow rise" style="--rise: 3">Das Musical</p>
+    <p class="hero-credits rise" style="--rise: 4">
+      Humorvoll, herzergreifend, galaktisch – von <strong>Eva Strasser</strong> (Buch &amp; Lyrics)
+      und <strong>Stephen Sundberg</strong> (Musik).
+    </p>
+    <nav class="hero-nav rise" style="--rise: 5" aria-label="Bereiche der Seite">
+      <a class="btn btn-primary" href="#videos">Videos</a>
+      <a class="btn btn-ghost" href="#synopsis">Synopsis</a>
+      <a class="btn btn-ghost" href="#vita">Vita</a>
+      <a class="btn btn-ghost" href="#fotos">Fotos</a>
+    </nav>
+  </div>
+
+  <a class="scroll-cue rise" style="--rise: 6" href="#videos" aria-label="Zu den Videos scrollen">
+    <span aria-hidden="true">↓</span>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: clip;
+    padding-top: clamp(4.5rem, 10vh, 8rem);
+  }
+
+  /* KI-Artwork des Flyers als Bühnenbild, stark abgedunkelt und in den Seitenhintergrund auslaufend */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      radial-gradient(58rem 32rem at 50% 58%, rgba(4, 7, 15, 0.55), transparent 70%),
+      linear-gradient(
+        to bottom,
+        rgba(4, 7, 15, 0.8),
+        rgba(4, 7, 15, 0.55) 42%,
+        rgba(4, 7, 15, 0.84) 80%,
+        var(--bg) 100%
+      ),
+      url('/assets/img/hero-bg.webp');
+    background-size: cover;
+    background-position: center bottom;
+  }
+
+  @media (max-width: 720px) {
+    .hero::before {
+      background-image:
+        radial-gradient(30rem 24rem at 50% 56%, rgba(4, 7, 15, 0.55), transparent 72%),
+        linear-gradient(
+          to bottom,
+          rgba(4, 7, 15, 0.8),
+          rgba(4, 7, 15, 0.58) 42%,
+          rgba(4, 7, 15, 0.86) 80%,
+          var(--bg) 100%
+        ),
+        url('/assets/img/hero-bg-800.webp');
+    }
+  }
+
+  .hero-inner {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    margin-block: auto;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7em;
+    padding: 0.55em 1.3em;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(10, 19, 34, 0.6);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-dim);
+  }
+
+  .badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 10px rgba(244, 184, 96, 0.8);
+  }
+
+  @keyframes badge-pulse {
+    50% {
+      opacity: 0.35;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .badge-dot {
+      animation: badge-pulse 2.4s ease-in-out infinite;
+    }
+  }
+
+  .hero-title {
+    margin-top: 1.6rem;
+    font-size: var(--text-hero);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: 0.05em;
+    color: #dff4fd;
+    text-shadow: var(--glow-cyan);
+  }
+
+  .hero-sub {
+    margin-top: 1.4rem;
+    color: var(--cyan);
+  }
+
+  .hero-credits {
+    margin-top: 1.5rem;
+    max-width: 44ch;
+    font-size: var(--text-lg);
+    color: var(--ink-dim);
+  }
+
+  .hero-credits strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .hero-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-top: 2.6rem;
+  }
+
+  .scroll-cue {
+    margin-bottom: 2.4rem;
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    background: rgba(4, 7, 15, 0.45);
+    color: var(--cyan);
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition:
+      border-color var(--duration-fast) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .scroll-cue:hover {
+    border-color: var(--cyan);
+    background: rgba(127, 220, 242, 0.08);
+  }
+
+  @keyframes cue-bob {
+    50% {
+      transform: translateY(6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-cue span {
+      animation: cue-bob 2.1s ease-in-out infinite;
+    }
+
+    .rise {
+      animation: rise 0.9s var(--ease-out) both;
+      animation-delay: calc(var(--rise) * 110ms);
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

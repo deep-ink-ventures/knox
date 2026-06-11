@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Datenschutzerklärung – KNOX">
+  <main id="main" class="section">
+    <div class="container legal">
+      <p class="eyebrow">KNOX – Das Musical</p>
+      <h1>Datenschutzerklärung</h1>
+
+      <h2>1. Verantwortlicher</h2>
+      <p>
+        Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:<br />
+        Christian Peters<br />
+        Wollankstraße 108<br />
+        13187 Berlin<br />
+        E-Mail: <a href="mailto:eva.strasser@gmail.com">eva.strasser@gmail.com</a>
+      </p>
+
+      <h2>2. Allgemeines zur Datenverarbeitung</h2>
+      <p>
+        Diese Website ist eine rein informative Seite zum Musical KNOX. Wir verarbeiten
+        personenbezogene Daten nur, soweit dies technisch erforderlich ist. Diese Website
+        verwendet <strong>keine Cookies</strong>, <strong>keine Analyse- oder Tracking-Dienste</strong>
+        und bindet <strong>keine Inhalte von Drittservern</strong> ein. Alle Schriftarten werden
+        lokal von unserem Server geladen; es findet insbesondere keine Verbindung zu Google
+        Fonts statt. Die Übertragung der Website erfolgt verschlüsselt über TLS (HTTPS).
+      </p>
+
+      <h2>3. Hosting und Server-Logfiles</h2>
+      <p>
+        Beim Aufruf dieser Website verarbeitet der Server unseres Hosting-Anbieters automatisch
+        Informationen, die Ihr Browser übermittelt (sogenannte Server-Logfiles): IP-Adresse,
+        Datum und Uhrzeit des Zugriffs, aufgerufene Datei, übertragene Datenmenge, Browsertyp
+        und -version sowie Betriebssystem. Diese Daten sind für die sichere und stabile
+        Bereitstellung der Website technisch erforderlich; Rechtsgrundlage ist Art.&nbsp;6
+        Abs.&nbsp;1 lit.&nbsp;f DSGVO (berechtigtes Interesse). Eine Zusammenführung mit anderen
+        Datenquellen oder eine Auswertung zu Marketingzwecken findet nicht statt.
+      </p>
+      <!-- TODO: Hosting-Abschnitt anpassen, falls nicht bei Vercel gehostet wird. -->
+      <p>
+        Die Website wird bei Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA,
+        gehostet. Soweit dabei personenbezogene Daten in die USA übermittelt werden, erfolgt
+        dies auf Grundlage eines Auftragsverarbeitungsvertrags sowie der
+        Standardvertragsklauseln der EU-Kommission bzw. des EU-US Data Privacy Framework.
+        Weitere Informationen: <a href="https://vercel.com/legal/privacy-policy" rel="noopener"
+        target="_blank">Datenschutzerklärung von Vercel</a>.
+      </p>
+
+      <h2>4. Kontaktaufnahme per E-Mail</h2>
+      <p>
+        Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen übermittelten Daten
+        (E-Mail-Adresse, Inhalt der Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage.
+        Rechtsgrundlage ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO, sofern Ihre Anfrage auf
+        den Abschluss eines Vertrags zielt, im Übrigen Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f
+        DSGVO. Wir löschen die Daten, sobald sie für die Bearbeitung nicht mehr erforderlich
+        sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+      </p>
+
+      <h2>5. Links zu YouTube</h2>
+      <p>
+        Auf dieser Website verlinken wir auf Videos bei YouTube. Es handelt sich um einfache
+        externe Links – beim Laden unserer Website werden <strong>keine Daten an YouTube oder
+        Google übertragen</strong>. Erst wenn Sie einen Link anklicken, verlassen Sie unsere
+        Website; ab diesem Zeitpunkt gilt die
+        <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">
+        Datenschutzerklärung von Google</a>.
+      </p>
+
+      <h2>6. Ihre Rechte</h2>
+      <p>
+        Ihnen stehen gegenüber dem Verantwortlichen die folgenden Rechte hinsichtlich Ihrer
+        personenbezogenen Daten zu: Auskunft (Art.&nbsp;15 DSGVO), Berichtigung (Art.&nbsp;16
+        DSGVO), Löschung (Art.&nbsp;17 DSGVO), Einschränkung der Verarbeitung (Art.&nbsp;18
+        DSGVO), Datenübertragbarkeit (Art.&nbsp;20 DSGVO) sowie Widerspruch gegen die
+        Verarbeitung (Art.&nbsp;21 DSGVO).
+      </p>
+      <p>
+        Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren
+        (Art.&nbsp;77 DSGVO). Zuständig für Berlin ist die Berliner Beauftragte für Datenschutz
+        und Informationsfreiheit, Alt-Moabit 59–61, 10555 Berlin.
+      </p>
+
+      <p>Stand: Juni 2026</p>
+
+      <p class="back">
+        <a href="/impressum">Impressum</a> · <a href="/">← Zurück zur Startseite</a>
+      </p>
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .legal {
+    max-width: 42rem;
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 1.6rem + 3vw, 3.5rem);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    margin-top: 1.6rem;
+  }
+
+  p {
+    color: var(--ink-dim);
+  }
+
+  .back {
+    margin-top: 2.5rem;
+  }
+</style>

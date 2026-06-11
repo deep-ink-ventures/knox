@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Impressum – KNOX">
+  <main id="main" class="section">
+    <div class="container legal">
+      <p class="eyebrow">KNOX – Das Musical</p>
+      <h1>Impressum</h1>
+
+      <h2>Angaben gemäß § 5 DDG</h2>
+      <p>
+        Christian Peters<br />
+        Wollankstraße 108<br />
+        13187 Berlin
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>E-Mail: <a href="mailto:eva.strasser@gmail.com">eva.strasser@gmail.com</a></p>
+
+      <h2>Verantwortlich für den Inhalt</h2>
+      <p>
+        Christian Peters<br />
+        Wollankstraße 108<br />
+        13187 Berlin
+      </p>
+
+      <p class="back">
+        <a href="/datenschutz">Datenschutzerklärung</a> · <a href="/">← Zurück zur Startseite</a>
+      </p>
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .legal {
+    max-width: 42rem;
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 1.6rem + 3vw, 3.5rem);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    margin-top: 1.6rem;
+  }
+
+  p {
+    color: var(--ink-dim);
+  }
+
+  .back {
+    margin-top: 2.5rem;
+  }
+</style>

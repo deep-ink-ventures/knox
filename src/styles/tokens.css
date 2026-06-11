@@ -1,0 +1,46 @@
+:root {
+  /* Bühne: tiefes Blauschwarz, vom Flyer abgeleitet */
+  --bg: #04070f;
+  --bg-raised: #0a1322;
+  --bg-panel: #0d1830;
+  --line: rgba(127, 220, 242, 0.14);
+  --line-strong: rgba(127, 220, 242, 0.32);
+
+  --ink: #e9f2fa;
+  --ink-dim: #9db1c7;
+  --ink-faint: #7e8fa6;
+
+  /* Cyan = Schnaizers Galaxy & Marke, Bernstein = Herz & Scheinwerfer */
+  --cyan: #7fdcf2;
+  --cyan-bright: #c8f1fc;
+  --amber: #f4b860;
+  --amber-ink: #1c1206;
+  --magenta: #c283d8;
+  --mint: #7fe0b2;
+  --steel: #8fa3ff;
+
+  --font-display: 'Unbounded', 'Arial Rounded MT Bold', sans-serif;
+  --font-body: 'Sora', 'Segoe UI', system-ui, sans-serif;
+  --font-label: 'Michroma', 'Sora', sans-serif;
+
+  --text-base: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.45rem);
+  --text-h3: clamp(1.25rem, 1.1rem + 0.8vw, 1.7rem);
+  --text-h2: clamp(1.75rem, 1.2rem + 2.4vw, 3.1rem);
+  --text-hero: clamp(4.25rem, 1.5rem + 15vw, 13rem);
+
+  --space-section: clamp(5.5rem, 4rem + 7vw, 11rem);
+  --container: 70rem;
+  --radius: 1.25rem;
+
+  --duration-fast: 160ms;
+  --duration: 420ms;
+  --duration-slow: 750ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --glow-cyan:
+    0 0 18px rgba(127, 220, 242, 0.5),
+    0 0 70px rgba(127, 220, 242, 0.26),
+    0 0 170px rgba(127, 220, 242, 0.16);
+  --glow-amber: 0 8px 34px rgba(244, 184, 96, 0.32);
+}

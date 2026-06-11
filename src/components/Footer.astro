@@ -1,0 +1,48 @@
+<footer class="footer">
+  <div class="container footer-inner">
+    <p class="footer-brand">© 2026 KNOX — Eva Strasser &amp; Stephen Sundberg</p>
+    <nav aria-label="Fußzeile">
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+      <a href="#hero-title">Nach oben ↑</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--line);
+    padding-block: 2.2rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-brand {
+    font-family: var(--font-label);
+    font-size: 0.64rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  nav {
+    display: flex;
+    gap: 1.8rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+    color: var(--ink-dim);
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--cyan-bright);
+  }
+</style>

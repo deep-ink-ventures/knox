@@ -1,0 +1,72 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+
+/* Entwurfs-Viten — gern durch finale Texte des Teams ersetzen. */
+const team = [
+  {
+    name: 'Eva Strasser',
+    role: 'Buch & Lyrics',
+    text: 'Drehbuchautorin und Autorin aus Berlin. Während der Pandemie wurde aus ihrer preisgekrönten dystopischen Kurzgeschichte die Welt von KNOX – Buch und Songtexte stammen aus ihrer Feder. Bei der Workshop-Präsentation stand sie außerdem selbst auf der Bühne: als KI Vox, die hoffnungslos in Knox verknallt ist.',
+  },
+  {
+    name: 'Stephen Sundberg',
+    role: 'Musik',
+    text: 'Musiker und Komponist. Für KNOX schrieb er die komplette Musik – von der großen Galaxy-Hymne bis zur Disco-Nummer, voll Wumms, Herz und Funkeln. Zehn der Songs sind oben als Video zu hören.',
+  },
+];
+---
+
+<section id="vita" class="section" aria-labelledby="vita-heading">
+  <div class="container">
+    <SectionHeading eyebrow="Vita">
+      <span id="vita-heading">Zwei Köpfe, ein Universum</span>
+    </SectionHeading>
+
+    <div class="team-grid">
+      {
+        team.map((person, index) => (
+          <article class="member panel" data-reveal style={`--reveal-delay: ${index * 120}ms`}>
+            <p class="member-role eyebrow">{person.role}</p>
+            <h3>{person.name}</h3>
+            <p class="member-text">{person.text}</p>
+          </article>
+        ))
+      }
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem;
+  }
+
+  .member {
+    padding: clamp(1.8rem, 1.4rem + 2vw, 2.8rem);
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+  }
+
+  .member-role {
+    font-size: 0.64rem;
+  }
+
+  .member:nth-child(2) .member-role {
+    color: var(--amber);
+  }
+
+  .member-text {
+    color: var(--ink-dim);
+    font-size: 0.98rem;
+  }
+
+  @media (max-width: 720px) {
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

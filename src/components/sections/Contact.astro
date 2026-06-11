@@ -1,0 +1,137 @@
+---
+const CONTACT_EMAIL = 'eva.strasser@gmail.com';
+
+const offers = ['Skript & Leseprobe', 'Demoaufnahmen', 'Pitch-Material', 'Workshop-Mitschnitt'];
+---
+
+<section id="kontakt" class="section contact" aria-labelledby="kontakt-heading">
+  <div class="container contact-inner">
+    <span class="contact-planet" aria-hidden="true">
+      <img
+        class="planet"
+        style="--float-duration: 6.5s; --float-delay: -2s"
+        src="/assets/img/planet-earth.webp"
+        width="480"
+        height="480"
+        alt=""
+        loading="lazy"
+      />
+    </span>
+
+    <header class="contact-heading" data-reveal>
+      <p class="eyebrow">Kontakt</p>
+      <h2 id="kontakt-heading">Bringen Sie KNOX auf&nbsp;die&nbsp;Bühne.</h2>
+    </header>
+
+    <p class="contact-copy" data-reveal style="--reveal-delay: 100ms">
+      Sie haben Material von uns erhalten – oder möchten KNOX kennenlernen? Wir freuen uns auf das
+      Gespräch mit Produzent:innen, Theatern und Bühnen.
+    </p>
+
+    <ul class="offers" role="list" data-reveal style="--reveal-delay: 200ms">
+      {offers.map((offer) => <li>{offer}</li>)}
+    </ul>
+
+    <div class="contact-actions" data-reveal style="--reveal-delay: 300ms">
+      <a class="btn btn-primary" href={`mailto:${CONTACT_EMAIL}?subject=KNOX%20%E2%80%93%20Anfrage`}>
+        E-Mail schreiben
+      </a>
+      <a class="contact-mail" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+    </div>
+
+    <p class="signoff" data-reveal style="--reveal-delay: 400ms">
+      Wir sagen <span>Tschitschibu Hurra!</span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .contact {
+    text-align: center;
+  }
+
+  .contact-inner {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    padding-top: clamp(7.5rem, 6rem + 6vw, 11rem);
+  }
+
+  .contact-planet {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    translate: -50% 0;
+    width: clamp(90px, 12vw, 150px);
+  }
+
+  .contact-heading {
+    display: grid;
+    gap: 1.1rem;
+    justify-items: center;
+  }
+
+  .contact-heading .eyebrow::before {
+    content: '✦';
+    margin-right: 0.9em;
+    color: var(--amber);
+  }
+
+  .contact-copy {
+    margin-top: 1.6rem;
+    max-width: 46ch;
+    color: var(--ink-dim);
+    font-size: var(--text-lg);
+  }
+
+  .offers {
+    list-style: none;
+    padding: 0;
+    margin-top: 2.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+  }
+
+  .offers li {
+    padding: 0.5em 1.2em;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--cyan-bright);
+    background: rgba(10, 19, 34, 0.5);
+  }
+
+  .contact-actions {
+    margin-top: 2.6rem;
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+  }
+
+  .contact-mail {
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--ink-dim);
+    text-decoration: none;
+  }
+
+  .contact-mail:hover {
+    color: var(--cyan-bright);
+  }
+
+  .signoff {
+    margin-top: 4.5rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.1rem, 1rem + 1vw, 1.6rem);
+    color: var(--ink);
+  }
+
+  .signoff span {
+    color: var(--amber);
+    text-shadow: 0 0 30px rgba(244, 184, 96, 0.45);
+  }
+</style>

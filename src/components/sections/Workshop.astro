@@ -1,0 +1,203 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+
+const cast = [
+  ['Knox', 'Manuel Nobis'],
+  ['Sophie', 'Nele Neugebauer'],
+  ['Dr. Schnaizer', 'Björn Kuhn'],
+  ['Ava', 'Anja Backus'],
+  ['Norma', 'Bettina Meske'],
+  ['Hollis', 'Alen Hodzovic'],
+  ['BDS He', 'Alexander Merz'],
+  ['BDS She', 'Simone Bernaldo'],
+  ['Vox', 'Eva Strasser'],
+];
+
+const crew = [
+  ['Klavier', 'Justin Lehmann-Friese'],
+  ['Buch & Lyrics', 'Eva Strasser'],
+  ['Musik', 'Stephen Sundberg'],
+];
+
+const facts = [
+  ['Datum', '24. Januar 2026, 19 Uhr'],
+  ['Bühne', 'eti – Europäisches Theaterinstitut'],
+  ['Ort', 'Rungestraße 20, 10179 Berlin-Mitte'],
+];
+---
+
+<section id="workshop" class="section" aria-labelledby="workshop-heading">
+  <span class="workshop-planet" aria-hidden="true">
+    <img
+      class="planet"
+      style="--float-duration: 7.5s; --float-delay: -3s"
+      src="/assets/img/planet-spiral.webp"
+      width="480"
+      height="480"
+      alt=""
+      loading="lazy"
+    />
+  </span>
+
+  <div class="container">
+    <SectionHeading eyebrow="Der Beweis auf der Bühne">
+      <span id="workshop-heading">Die Workshop-Präsentation</span>
+    </SectionHeading>
+
+    <p class="workshop-lead" data-reveal>
+      Am 24. Januar 2026 brachte ein großartiger Cast die Welt von KNOX zum ersten Mal auf die Bühne
+      des eti in Berlin-Mitte – vor Publikum, mit Klavier, voll Wumms, Herz und Funkeln.
+    </p>
+
+    <dl class="facts" data-reveal style="--reveal-delay: 100ms">
+      {
+        facts.map(([label, value]) => (
+          <div class="fact panel">
+            <dt>{label}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <div class="cast panel" data-reveal style="--reveal-delay: 200ms">
+      <h3>Die Besetzung</h3>
+      <dl class="cast-list">
+        {
+          cast.map(([role, name]) => (
+            <div class="cast-row">
+              <dt>{role}</dt>
+              <dd>{name}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <dl class="cast-list crew">
+        {
+          crew.map(([role, name]) => (
+            <div class="cast-row">
+              <dt>{role}</dt>
+              <dd>{name}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <p class="cast-note">Eindrücke, Fotos und Mitschnitt der Präsentation gern auf Anfrage.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .workshop-planet {
+    position: absolute;
+    top: 31%;
+    right: -1%;
+    width: clamp(90px, 13vw, 190px);
+    z-index: -1;
+  }
+
+  .workshop-lead {
+    max-width: 52ch;
+    font-size: var(--text-lg);
+    color: var(--ink-dim);
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+    margin-block: 2.8rem;
+  }
+
+  .fact {
+    padding: 1.4rem 1.6rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .fact dt {
+    font-family: var(--font-label);
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--cyan);
+  }
+
+  .fact dd {
+    margin: 0;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.98rem;
+  }
+
+  .cast {
+    padding: clamp(1.8rem, 1.4rem + 2vw, 3rem);
+  }
+
+  .cast h3 {
+    margin-bottom: 1.6rem;
+  }
+
+  .cast-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(1.5rem, 4vw, 4rem);
+    margin: 0;
+  }
+
+  .cast-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding-block: 0.65rem;
+    border-bottom: 1px dotted var(--line);
+  }
+
+  .cast-row dt {
+    font-family: var(--font-label);
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  .cast-row dd {
+    margin: 0;
+    font-weight: 600;
+    color: var(--ink);
+    text-align: right;
+  }
+
+  .crew {
+    margin-top: 1.6rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .crew .cast-row dt {
+    color: var(--amber);
+  }
+
+  .cast-note {
+    margin-top: 1.8rem;
+    font-size: 0.9rem;
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 880px) {
+    .facts {
+      grid-template-columns: 1fr;
+    }
+
+    .cast-list {
+      grid-template-columns: 1fr;
+    }
+
+    .workshop-planet {
+      width: 72px;
+      top: 14%;
+      right: 4%;
+    }
+  }
+</style>

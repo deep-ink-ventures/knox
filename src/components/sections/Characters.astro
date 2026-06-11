@@ -1,0 +1,167 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+
+interface Figure {
+  name: string;
+  role: string;
+  text: string;
+  accent: string;
+  glyph: string;
+  main?: boolean;
+}
+
+/* Kurztexte: aus den Flyer-Fakten entwickelt — redaktionelle Feinarbeit gern anpassen. */
+const figures: Figure[] = [
+  {
+    name: 'Knox',
+    role: 'Der Held',
+    text: 'Ein zu großer Kopf, ein großes Herz – und plötzlich die Verantwortung für einen ganzen Planeten.',
+    accent: 'var(--cyan)',
+    glyph: 'M12 2 Q13 10 22 12 Q13 14 12 22 Q11 14 2 12 Q11 10 12 2 Z',
+    main: true,
+  },
+  {
+    name: 'Sophie',
+    role: 'Die rebellische Schwester',
+    text: 'Hält wenig von Regeln und viel von ihrem Bruder – auch wenn sie das niemals zugeben würde.',
+    accent: 'var(--magenta)',
+    glyph: 'M13 2 L6 13 L11 13 L9 22 L18 9 L13 9 Z',
+  },
+  {
+    name: 'Dr. Schnaizer',
+    role: 'Der Tech-Guru',
+    text: 'Selbstverliebt, milliardenschwer, Besitzer einer privatisierten Galaxy. Sein neuestes Produkt: THE EARTH.',
+    accent: 'var(--steel)',
+    glyph: 'M12 3 L19.5 7.5 L19.5 16.5 L12 21 L4.5 16.5 L4.5 7.5 Z',
+  },
+  {
+    name: 'Ava',
+    role: 'Der Superstar',
+    text: 'Schnaizers Frau, gefeiert zwischen den Sternen. Die Erde? Abgeschrieben. Ihre eigenen Pläne? Streng geheim.',
+    accent: 'var(--amber)',
+    glyph: 'M12 2.5 L14.6 9 L21.5 9.3 L16.1 13.6 L18 20.5 L12 16.6 L6 20.5 L7.9 13.6 L2.5 9.3 L9.4 9 Z',
+  },
+  {
+    name: 'Hollis',
+    role: 'Der Partypilot',
+    text: 'Fliegt alles, was Schub hat – und verpasst keine Party zwischen hier und der Galaxy.',
+    accent: 'var(--mint)',
+    glyph: 'M3 19 L21 12 L3 5 L7 12 Z',
+  },
+  {
+    name: 'Vox',
+    role: 'Die KI',
+    text: 'Allgegenwärtig, hochintelligent – und hoffnungslos in Knox verknallt.',
+    accent: 'var(--cyan-bright)',
+    glyph: 'M12 10 A2 2 0 1 1 11.9 10 M12 6 A6 6 0 0 1 18 12 M12 2 A10 10 0 0 1 22 12',
+  },
+];
+---
+
+<section id="figuren" class="section" aria-labelledby="figuren-heading">
+  <div class="container">
+    <SectionHeading eyebrow="Die Figuren">
+      <span id="figuren-heading">Ein ungleiches Team gegen das Ende der Welt</span>
+    </SectionHeading>
+
+    <ul class="figure-grid" role="list">
+      {
+        figures.map((figure, index) => (
+          <li
+            class:list={['figure-card', 'panel', { main: figure.main }]}
+            style={`--accent: ${figure.accent}; --reveal-delay: ${index * 80}ms`}
+            data-reveal
+          >
+            <div class="figure-top">
+              <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+                <path d={figure.glyph} fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+              </svg>
+              <p class="figure-role">{figure.role}</p>
+            </div>
+            <h3>{figure.name}</h3>
+            <p class="figure-text">{figure.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="figure-footnote" data-reveal>
+      Und das ist längst nicht das ganze Universum – die vollständige Besetzung der
+      Workshop-Präsentation steht <a href="#workshop">weiter unten</a>.
+    </p>
+  </div>
+</section>
+
+<style>
+  .figure-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.4rem;
+  }
+
+  .figure-card {
+    display: grid;
+    align-content: start;
+    gap: 0.9rem;
+    padding: 1.8rem;
+    transition:
+      transform var(--duration) var(--ease-out),
+      border-color var(--duration) var(--ease-out),
+      box-shadow var(--duration) var(--ease-out);
+  }
+
+  .figure-card:hover {
+    transform: translateY(-5px);
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+    box-shadow: 0 18px 50px -18px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+
+  .figure-card.main {
+    border-color: var(--line-strong);
+    box-shadow: 0 0 50px -16px rgba(127, 220, 242, 0.45);
+  }
+
+  .figure-top {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--accent);
+  }
+
+  .figure-role {
+    font-family: var(--font-label);
+    font-size: 0.62rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+  }
+
+  .figure-card h3 {
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+  }
+
+  .figure-text {
+    color: var(--ink-dim);
+    font-size: 0.95rem;
+  }
+
+  .figure-footnote {
+    margin-top: 3.4rem;
+    color: var(--ink-faint);
+    font-size: 0.92rem;
+  }
+
+  @media (max-width: 880px) {
+    .figure-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 600px) {
+    .figure-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

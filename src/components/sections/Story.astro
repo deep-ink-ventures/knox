@@ -1,0 +1,146 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+---
+
+<section id="synopsis" class="section" aria-labelledby="synopsis-heading">
+  <div class="container">
+    <SectionHeading eyebrow="Synopsis">
+      <span id="synopsis-heading">
+        Die Galaxy hat einen neuen Planeten: <span class="the-earth">The&nbsp;Earth.</span>
+      </span>
+    </SectionHeading>
+
+    <div class="story-grid">
+      <div class="story-prose" data-reveal>
+        <p>
+          In einer nicht allzu fernen Zukunft hat Dr.&nbsp;Schnaizer – selbstverliebter Tech-Guru
+          und reichster Mann zwischen den Sternen – seine eigene privatisierte Galaxy aufgebaut:
+          glitzernde Raumstationen, künstliche Welten, alles im Angebot. Jetzt fehlt nur noch das
+          Krönungsstück: <em>THE&nbsp;EARTH</em>, ein brandneuer Planet ganz nach seinem Geschmack.
+          Gut, es gibt da schon etwas in der Richtung – die Erde nämlich. Aber die ist in seinen
+          Augen ein <em>failed planet</em> und hat ihre besten Zeiten hinter sich.
+        </p>
+        <p>
+          Dumm nur: Auf diesem <em>failed planet</em> leben Menschen. Zum Beispiel Knox – ein
+          ungewöhnlicher Held mit einem zu großen Kopf und einem noch größeren Herzen. Als er hinter
+          Schnaizers Pläne kommt, muss er über sich hinauswachsen: Zusammen mit seiner rebellischen
+          Schwester Sophie, dem Partypiloten Hollis und der KI Vox, die hoffnungslos in ihn
+          verknallt ist, nimmt er den Kampf um die echte Erde auf.
+        </p>
+        <p>
+          Zwischen Discokugeln und Raumstationen mischt auch Superstar Ava mit, Schnaizers
+          schillernde Frau. Die Erde? Abgeschrieben, findet sie – verfolgt dabei allerdings noch
+          ganz eigene Pläne&nbsp;…
+        </p>
+        <p>
+          KNOX ist ein humorvolles und herzergreifendes Musical über Familie, Mut und die Frage, ob
+          dieser beschissene Planet es nicht doch wert ist, gerettet zu werden. Spoiler: Ist er.
+        </p>
+      </div>
+
+      <aside class="story-aside">
+        <figure class="pull-quote" data-reveal style="--reveal-delay: 120ms">
+          <blockquote>
+            <p>»Die Erde? Ein <em>failed planet</em>.«</p>
+          </blockquote>
+          <figcaption>Dr. Schnaizer</figcaption>
+        </figure>
+
+        <div class="origin panel" data-reveal style="--reveal-delay: 240ms">
+          <h3>Wie alles begann</h3>
+          <p>
+            Es waren einmal während Corona eine Drehbuchautorin und ein Musiker, die viel zu Hause
+            saßen – und schließlich beschlossen, gemeinsam ein Musical zu schreiben. Aus einer
+            dystopischen, preisgekrönten Kurzgeschichte wurde KNOX.
+          </p>
+          <p class="origin-motto">Voll Wumms, Herz und Funkeln.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .the-earth {
+    color: var(--cyan);
+    text-shadow: 0 0 26px rgba(127, 220, 242, 0.45);
+    white-space: nowrap;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: clamp(2.5rem, 2rem + 3vw, 5rem);
+    align-items: start;
+  }
+
+  .story-prose {
+    display: grid;
+    gap: 1.4rem;
+    font-size: var(--text-lg);
+    color: var(--ink-dim);
+    max-width: 58ch;
+  }
+
+  .story-prose em {
+    color: var(--cyan-bright);
+    font-style: italic;
+  }
+
+  .story-aside {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .pull-quote {
+    border-left: 2px solid var(--cyan);
+    padding-left: 1.6rem;
+  }
+
+  .pull-quote blockquote p {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.1rem);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .pull-quote em {
+    color: var(--cyan);
+    font-style: normal;
+  }
+
+  .pull-quote figcaption {
+    margin-top: 0.9rem;
+    font-family: var(--font-label);
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .origin {
+    padding: clamp(1.6rem, 1.3rem + 1.5vw, 2.4rem);
+    display: grid;
+    gap: 1rem;
+  }
+
+  .origin p {
+    color: var(--ink-dim);
+    font-size: 0.98rem;
+  }
+
+  .origin-motto {
+    font-family: var(--font-label);
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--amber) !important;
+  }
+
+  @media (max-width: 880px) {
+    .story-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
