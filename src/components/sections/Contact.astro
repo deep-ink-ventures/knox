@@ -28,6 +28,7 @@ const offers = ['Skript & Leseprobe', 'Demoaufnahmen', 'Pitch-Material', 'Worksh
       Gespräch mit Produzent:innen, Theatern und Bühnen.
     </p>
 
+    <p class="offers-label" data-reveal style="--reveal-delay: 150ms">Auf Anfrage erhalten Sie:</p>
     <ul class="offers" role="list" data-reveal style="--reveal-delay: 200ms">
       {offers.map((offer) => <li>{offer}</li>)}
     </ul>
@@ -36,7 +37,7 @@ const offers = ['Skript & Leseprobe', 'Demoaufnahmen', 'Pitch-Material', 'Worksh
       <a class="btn btn-primary" href={`mailto:${CONTACT_EMAIL}?subject=KNOX%20%E2%80%93%20Anfrage`}>
         E-Mail schreiben
       </a>
-      <a class="contact-mail" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      <p class="contact-or">oder direkt an <a class="contact-mail" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
     </div>
 
     <p class="signoff" data-reveal style="--reveal-delay: 400ms">
@@ -84,10 +85,19 @@ const offers = ['Skript & Leseprobe', 'Demoaufnahmen', 'Pitch-Material', 'Worksh
     font-size: var(--text-lg);
   }
 
+  .offers-label {
+    margin-top: 2.4rem;
+    font-family: var(--font-label);
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
   .offers {
     list-style: none;
     padding: 0;
-    margin-top: 2.2rem;
+    margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -95,12 +105,20 @@ const offers = ['Skript & Leseprobe', 'Demoaufnahmen', 'Pitch-Material', 'Worksh
   }
 
   .offers li {
-    padding: 0.5em 1.2em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.45em 1.1em;
     border: 1px solid var(--line);
     border-radius: 999px;
     font-size: 0.85rem;
     color: var(--cyan-bright);
-    background: color-mix(in srgb, var(--bg-raised) 50%, transparent);
+  }
+
+  .offers li::before {
+    content: '✓';
+    color: var(--mint);
+    font-size: 0.85em;
   }
 
   .contact-actions {
@@ -108,6 +126,11 @@ const offers = ['Skript & Leseprobe', 'Demoaufnahmen', 'Pitch-Material', 'Worksh
     display: grid;
     justify-items: center;
     gap: 1rem;
+  }
+
+  .contact-or {
+    font-size: 0.9rem;
+    color: var(--ink-dim);
   }
 
   .contact-mail {

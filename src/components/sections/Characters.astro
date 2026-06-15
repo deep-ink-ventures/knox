@@ -1,5 +1,6 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
+import SideQuote from '../ui/SideQuote.astro';
 
 interface Figure {
   name: string;
@@ -64,6 +65,10 @@ const figures: Figure[] = [
       <span id="figuren-heading">Ein ungleiches Team gegen das Ende der Welt</span>
     </SectionHeading>
 
+    <SideQuote attribution="Ava" accent="var(--amber)" align="right">
+      »Von Evolution krieg ich Migräne«
+    </SideQuote>
+
     <ul class="figure-grid" role="list">
       {
         figures.map((figure, index) => (
@@ -84,6 +89,10 @@ const figures: Figure[] = [
         ))
       }
     </ul>
+
+    <SideQuote attribution="Norma" accent="var(--steel)" align="left">
+      »Die anderen … sind alle verrückt!«
+    </SideQuote>
 
     <p class="figure-footnote" data-reveal>
       Und das ist längst nicht das ganze Universum – die vollständige Besetzung der
@@ -106,16 +115,6 @@ const figures: Figure[] = [
     align-content: start;
     gap: 0.9rem;
     padding: 1.8rem;
-    transition:
-      transform var(--duration) var(--ease-out),
-      border-color var(--duration) var(--ease-out),
-      box-shadow var(--duration) var(--ease-out);
-  }
-
-  .figure-card:hover {
-    transform: translateY(-5px);
-    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
-    box-shadow: 0 18px 50px -18px color-mix(in srgb, var(--accent) 40%, transparent);
   }
 
   .figure-card.main {

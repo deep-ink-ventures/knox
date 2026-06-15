@@ -1,5 +1,6 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
+import SideQuote from '../ui/SideQuote.astro';
 
 const cast = [
   ['Knox', 'Manuel Nobis'],
@@ -13,10 +14,10 @@ const cast = [
   ['Vox', 'Eva Strasser'],
 ];
 
-const crew = [
+const band = [
   ['Klavier', 'Justin Lehmann-Friese'],
-  ['Buch & Lyrics', 'Eva Strasser'],
-  ['Musik', 'Stephen Sundberg'],
+  ['Bass', 'Abel Lovac'],
+  ['Schlagzeug', 'Stephen Sundberg'],
 ];
 
 const facts = [
@@ -46,8 +47,12 @@ const facts = [
 
     <p class="workshop-lead" data-reveal>
       Am 24. Januar 2026 brachte ein großartiger Cast die Welt von KNOX zum ersten Mal auf die Bühne
-      des eti in Berlin-Mitte – vor Publikum, mit Klavier, voll Wumms, Herz und Funkeln.
+      des eti in Berlin-Mitte – vor Publikum, live begleitet von Klavier, Bass und Schlagzeug.
     </p>
+
+    <SideQuote attribution="Sophie" accent="var(--magenta)" align="right">
+      »Wir geben nicht auf! Egal was passiert!«
+    </SideQuote>
 
     <dl class="facts" data-reveal style="--reveal-delay: 100ms">
       {
@@ -72,9 +77,10 @@ const facts = [
           ))
         }
       </dl>
-      <dl class="cast-list crew">
+      <p class="band-label">Live-Band</p>
+      <dl class="cast-list band">
         {
-          crew.map(([role, name]) => (
+          band.map(([role, name]) => (
             <div class="cast-row">
               <dt>{role}</dt>
               <dd>{name}</dd>
@@ -169,14 +175,20 @@ const facts = [
     text-align: right;
   }
 
-  .crew {
+  .band-label {
     margin-top: 1.6rem;
-    padding-top: 1rem;
+    padding-top: 1.4rem;
     border-top: 1px solid var(--line-strong);
+    font-family: var(--font-label);
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
   }
 
-  .crew .cast-row dt {
-    color: var(--amber);
+  .band {
+    margin-top: 0.9rem;
+    grid-template-columns: 1fr;
   }
 
   .cast-note {
