@@ -1,19 +1,20 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 
-/* Standbilder aus den Song-Videos der Workshop-Präsentation,
-   selbst gehostet unter public/assets/img/videos/. */
-const stills = [
-  ['intro-galaxy', 'Intro + Galaxy'],
-  ['die-sterne-da-oben', 'Die Sterne da oben'],
-  ['disco-junge', 'Disco Junge'],
-  ['er-gehoert-in-eine-einrichtung', 'Er gehört in eine Einrichtung'],
-  ['revolution', 'Revolution'],
-  ['pilot', 'Pilot'],
-  ['wie-sieht-der-denn-aus', 'Wie sieht der denn aus'],
-  ['die-zukunft', 'Die Zukunft'],
-  ['unser-traum', 'Unser Traum'],
-  ['galaxie', 'Galaxie'],
+/* Fotos der Workshop-Präsentation, selbst gehostet unter public/assets/img/fotos/.
+   Gemischte Hoch-, Quer- und Quadratformate – das Masonry-Raster bewahrt jedes
+   Seitenverhältnis, damit keine Gesichter beschnitten werden. */
+const fotos = [
+  ['live-band', 'Die Live-Band mit Gitarre und Keyboard bei der Workshop-Präsentation', 800, 1423],
+  ['ensemble-buehne', 'Das Ensemble auf der Bühne bei der Workshop-Präsentation', 800, 534],
+  ['kostuemprobe', 'Kostümprobe: Anprobe des Kopfschmucks', 800, 1067],
+  ['begruessung', 'Begrüßung und Einführung auf der Bühne', 800, 800],
+  ['ensemble-lesung', 'Das Ensemble bei der szenischen Lesung an den Notenständern', 800, 1067],
+  ['team-selfie', 'Gruppenselfie des KNOX-Teams nach der Präsentation', 800, 800],
+  ['backstage-schlagzeug', 'Backstage an Textbuch und Schlagzeug', 800, 1067],
+  ['ensemble-gruppe', 'Gruppenfoto des Ensembles auf der Bühne', 800, 534],
+  ['kuenstler-backstage', 'Zwei Mitwirkende mit Kaffeebechern nach der Präsentation', 800, 1067],
+  ['textbuch', 'Das Textbuch von „Knox – Ein neues Musical“, Berlin Januar 2026', 800, 1423],
 ];
 ---
 
@@ -24,25 +25,27 @@ const stills = [
     </SectionHeading>
 
     <p class="fotos-lead" data-reveal>
-      Eindrücke von der Workshop-Präsentation am 24. Januar 2026 im eti Berlin – Standbilder aus
-      den Song-Videos.
+      Eindrücke von der Workshop-Präsentation am 24. Januar 2026 im eti Berlin – von der Probe
+      über die Bühne bis backstage.
     </p>
 
     <ul class="fotos-grid" role="list">
       {
-        stills.map(([slug, title], index) => (
-          <li class="foto panel" data-reveal style={`--reveal-delay: ${(index % 2) * 90}ms`}>
+        fotos.map(([slug, alt, width, height], index) => (
+          <li class="foto panel" data-reveal style={`--reveal-delay: ${(index % 3) * 70}ms`}>
             <img
-              src={`/assets/img/videos/${slug}.webp`}
-              width="640"
-              height="360"
-              alt={`Szene aus der Workshop-Präsentation: „${title}“`}
+              src={`/assets/img/fotos/${slug}.webp`}
+              width={width}
+              height={height}
+              alt={alt}
               loading="lazy"
             />
           </li>
         ))
       }
     </ul>
+
+    <p class="fotos-credit" data-reveal>Fotos: 101united und das KNOX-Team.</p>
   </div>
 </section>
 
@@ -53,22 +56,30 @@ const stills = [
     margin-bottom: 2.4rem;
   }
 
+  /* Masonry per CSS-Spalten: bewahrt jedes Seitenverhältnis ohne Zuschnitt. */
   .fotos-grid {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
+    columns: 1;
+    column-gap: 1.2rem;
   }
 
   @media (min-width: 560px) {
     .fotos-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      columns: 2;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .fotos-grid {
+      columns: 3;
     }
   }
 
   .foto {
+    break-inside: avoid;
+    margin-bottom: 1.2rem;
     overflow: clip;
   }
 
@@ -76,12 +87,16 @@ const stills = [
     width: 100%;
     height: auto;
     display: block;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
     transition: transform var(--duration-slow) var(--ease-out);
   }
 
   .foto:hover img {
     transform: scale(1.035);
+  }
+
+  .fotos-credit {
+    margin-top: 1.2rem;
+    font-size: 0.92rem;
+    color: var(--ink-faint);
   }
 </style>
