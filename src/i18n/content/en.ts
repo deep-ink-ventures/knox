@@ -29,7 +29,7 @@ const en: SiteContent = {
     heading: 'Songs full of punch, heart and sparkle',
     titleQuote: { open: '“', close: '”' },
     watchHint: '– watch the video on YouTube (opens in a new tab)',
-    quote: '“You can’t feel turbulence when you’re dancing”',
+    quote: '“Turbulence? That’s just the beat dropping.”',
     note: 'All videos open on YouTube in a new tab. The songs are sung in German. Demo recordings and sheet music are available <a href="#kontakt">on request</a>.',
   },
   story: {
