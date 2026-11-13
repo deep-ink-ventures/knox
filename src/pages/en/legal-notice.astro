@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import { ROUTES } from '../../i18n/config.ts';
+---
+
+<Base route="legalNotice" title="Legal notice – KNOX">
+  <main id="main" class="section">
+    <div class="container legal">
+      <p class="eyebrow">KNOX – The Musical</p>
+      <h1>Legal notice</h1>
+
+      <p>
+        This is a courtesy translation. Only the German version
+        (<a href={ROUTES.legalNotice.de} hreflang="de" lang="de">Impressum</a>) is legally binding.
+      </p>
+
+      <h2>Information pursuant to Section 5 DDG (German Digital Services Act)</h2>
+      <p>
+        Christian Peters<br />
+        Wollankstraße 108<br />
+        13187 Berlin<br />
+        Germany
+      </p>
+
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:kontakt@knox-das-musical.de">kontakt@knox-das-musical.de</a></p>
+
+      <h2>Responsible for the content</h2>
+      <p>
+        Christian Peters<br />
+        Wollankstraße 108<br />
+        13187 Berlin<br />
+        Germany
+      </p>
+
+      <p class="back">
+        <a href={ROUTES.privacy.en}>Privacy policy</a> · <a href={ROUTES.home.en}>← Back to the homepage</a>
+      </p>
+    </div>
+  </main>
+</Base>

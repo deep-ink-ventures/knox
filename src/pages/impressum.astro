@@ -1,9 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import Footer from '../components/Footer.astro';
+import { ROUTES } from '../i18n/config.ts';
 ---
 
-<Base title="Impressum – KNOX">
+<Base route="legalNotice" title="Impressum – KNOX">
   <main id="main" class="section">
     <div class="container legal">
       <p class="eyebrow">KNOX – Das Musical</p>
@@ -27,9 +27,8 @@ import Footer from '../components/Footer.astro';
       </p>
 
       <p class="back">
-        <a href="/datenschutz">Datenschutzerklärung</a> · <a href="/">← Zurück zur Startseite</a>
+        <a href={ROUTES.privacy.de}>Datenschutzerklärung</a> · <a href={ROUTES.home.de}>← Zurück zur Startseite</a>
       </p>
     </div>
   </main>
-  <Footer />
 </Base>

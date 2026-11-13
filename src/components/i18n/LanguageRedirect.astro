@@ -1,0 +1,60 @@
+---
+/* Browser-Spracherkennung, nur auf der deutschen Startseite „/“ eingebunden.
+   Läuft als erstes im <head>, also bevor CSS, Fonts oder Inhalte geladen werden.
+
+   Reihenfolge der Entscheidung:
+   1. Crawler werden nie umgeleitet – „/“ bleibt als deutsche Seite indexierbar.
+   2. Kommt der Besuch von einer Seite dieser Website, hat jemand bewusst geklickt → bleiben.
+   3. Eine über den Umschalter gespeicherte Wahl gewinnt.
+   4. Sonst entscheidet die erste Browsersprache, die Deutsch oder Englisch ist;
+      ohne beides gibt es die internationale, englische Fassung.
+
+   Kein Referrer oder blockierter Speicher zählen als „von außen“ bzw. „keine Wahl“.
+   Bei einer Weiterleitung wird die Seite unsichtbar geschaltet, damit nichts Deutsches
+   aufblitzt – mit 3-s-Sicherheitsnetz, falls die Navigation hängen bleibt.
+   Das Skript wird ungebündelt ausgeliefert, daher bleiben Kommentare hier oben. */
+import { LANG_STORAGE_KEY, ROUTES } from '../../i18n/config.ts';
+
+const target = ROUTES.home.en;
+---
+
+<script is:inline define:vars={{ storageKey: LANG_STORAGE_KEY, target }}>
+  const CRAWLER = /bot|crawl|spider|slurp|google|lighthouse|facebookexternalhit/i;
+
+  const cameFromThisSite = () => {
+    try {
+      return new URL(document.referrer).origin === location.origin;
+    } catch {
+      return false;
+    }
+  };
+
+  const storedChoice = () => {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch {
+      return null;
+    }
+  };
+
+  const browserPrefersGerman = () => {
+    const tags = navigator.languages?.length ? navigator.languages : [navigator.language];
+    for (const tag of tags) {
+      const primary = String(tag).toLowerCase().split('-')[0];
+      if (primary === 'de') return true;
+      if (primary === 'en') return false;
+    }
+    return false;
+  };
+
+  if (!CRAWLER.test(navigator.userAgent) && !cameFromThisSite()) {
+    const choice = storedChoice();
+    const wantsEnglish = choice === 'de' || choice === 'en' ? choice === 'en' : !browserPrefersGerman();
+    if (wantsEnglish) {
+      const root = document.documentElement;
+      root.style.visibility = 'hidden';
+      setTimeout(() => root.style.removeProperty('visibility'), 3000);
+      location.replace(target + location.search + location.hash);
+    }
+  }
+</script>

@@ -7,8 +7,13 @@ import '@fontsource/unbounded/800.css';
 import '../styles/tokens.css';
 import '../styles/global.css';
 import Starfield from '../components/Starfield.astro';
+import Footer from '../components/Footer.astro';
+import LanguageRedirect from '../components/i18n/LanguageRedirect.astro';
+import LanguageSwitch from '../components/i18n/LanguageSwitch.astro';
+import { DEFAULT_LOCALE, LOCALES, LOCALE_META, ROUTES, contentFor, toLocale, type RouteKey } from '../i18n/index.ts';
 
 interface Props {
+  route: RouteKey;
   title?: string;
   description?: string;
   preloadHero?: boolean;
@@ -16,21 +21,29 @@ interface Props {
 
 const SITE_URL = 'https://www.knox-das-musical.de';
 
-const {
-  title = 'KNOX – Das Weltraum-Musical',
-  description = 'Humorvoll und herzergreifend: KNOX, das Weltraum-Musical von Eva Strasser (Buch & Lyrics) und Stephen Sundberg (Musik). Material für Produzent:innen auf Anfrage.',
-  preloadHero = false,
-} = Astro.props;
+const locale = toLocale(Astro.currentLocale);
+const t = contentFor(Astro.currentLocale);
+
+const { route, title = t.meta.title, description = t.meta.description, preloadHero = false } = Astro.props;
+
+const absolute = (path: string) => new URL(path, SITE_URL).href;
+const alternates = LOCALES.map((lang) => ({ lang, href: absolute(ROUTES[route][lang]) }));
+const otherLocales = LOCALES.filter((lang) => lang !== locale);
+// Browser-Spracherkennung nur beim Einstieg über die deutsche Startseite.
+const detectLanguage = route === 'home' && locale === DEFAULT_LOCALE;
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
+    {detectLanguage && <LanguageRedirect />}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={new URL(Astro.url.pathname, SITE_URL).href} />
+    <link rel="canonical" href={absolute(ROUTES[route][locale])} />
+    {alternates.map(({ lang, href }) => <link rel="alternate" hreflang={lang} href={href} />)}
+    <link rel="alternate" hreflang="x-default" href={absolute(ROUTES[route][DEFAULT_LOCALE])} />
     <meta name="theme-color" content="#04070f" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
@@ -44,7 +57,8 @@ const {
       )
     }
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale" content={LOCALE_META[locale].ogLocale} />
+    {otherLocales.map((lang) => <meta property="og:locale:alternate" content={LOCALE_META[lang].ogLocale} />)}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${SITE_URL}/assets/img/og.jpg`} />
@@ -56,9 +70,11 @@ const {
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+    <a class="skip-link" href="#main">{t.ui.skipLink}</a>
+    <LanguageSwitch route={route} />
     <Starfield />
     <slot />
+    <Footer route={route} />
     <script>
       const revealables = document.querySelectorAll('[data-reveal]');
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

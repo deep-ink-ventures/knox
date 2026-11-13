@@ -1,6 +1,9 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 import SideQuote from '../ui/SideQuote.astro';
+import { contentFor, type Instrument } from '../../i18n/index.ts';
+
+const t = contentFor(Astro.currentLocale);
 
 const cast = [
   ['Knox', 'Manuel Nobis'],
@@ -14,16 +17,10 @@ const cast = [
   ['Vox', 'Eva Strasser'],
 ];
 
-const band = [
-  ['Klavier', 'Justin Lehmann-Friese'],
-  ['Bass', 'Abel Lovac'],
-  ['Schlagzeug', 'Stephen Sundberg'],
-];
-
-const facts = [
-  ['Datum', '24. Januar 2026, 19 Uhr'],
-  ['Bühne', 'eti – Europäisches Theaterinstitut'],
-  ['Ort', 'Rungestraße 20, 10179 Berlin-Mitte'],
+const band: [Instrument, string][] = [
+  ['piano', 'Justin Lehmann-Friese'],
+  ['bass', 'Abel Lovac'],
+  ['drums', 'Stephen Sundberg'],
 ];
 ---
 
@@ -41,22 +38,19 @@ const facts = [
   </span>
 
   <div class="container">
-    <SectionHeading eyebrow="Der Beweis auf der Bühne">
-      <span id="workshop-heading">Die Workshop-Präsentation</span>
+    <SectionHeading eyebrow={t.workshop.eyebrow}>
+      <span id="workshop-heading">{t.workshop.heading}</span>
     </SectionHeading>
 
-    <p class="workshop-lead" data-reveal>
-      Am 24. Januar 2026 brachte ein großartiger Cast die Welt von KNOX zum ersten Mal auf die Bühne
-      des eti in Berlin-Mitte – vor Publikum, live begleitet von Klavier, Bass und Schlagzeug.
-    </p>
+    <p class="workshop-lead" data-reveal>{t.workshop.lead}</p>
 
     <SideQuote attribution="Sophie" accent="var(--magenta)" align="right">
-      »Wir geben nicht auf! Egal was passiert!«
+      <Fragment set:html={t.workshop.quote} />
     </SideQuote>
 
     <dl class="facts" data-reveal style="--reveal-delay: 100ms">
       {
-        facts.map(([label, value]) => (
+        t.workshop.facts.map(({ label, value }) => (
           <div class="fact panel">
             <dt>{label}</dt>
             <dd>{value}</dd>
@@ -66,7 +60,7 @@ const facts = [
     </dl>
 
     <div class="cast panel" data-reveal style="--reveal-delay: 200ms">
-      <h3>Die Besetzung</h3>
+      <h3>{t.workshop.castTitle}</h3>
       <dl class="cast-list">
         {
           cast.map(([role, name]) => (
@@ -77,18 +71,18 @@ const facts = [
           ))
         }
       </dl>
-      <p class="band-label">Live-Band</p>
+      <p class="band-label">{t.workshop.bandLabel}</p>
       <dl class="cast-list band">
         {
-          band.map(([role, name]) => (
+          band.map(([instrument, name]) => (
             <div class="cast-row">
-              <dt>{role}</dt>
+              <dt>{t.workshop.instruments[instrument]}</dt>
               <dd>{name}</dd>
             </div>
           ))
         }
       </dl>
-      <p class="cast-note">Eindrücke, Fotos und Mitschnitt der Präsentation gern auf Anfrage.</p>
+      <p class="cast-note">{t.workshop.castNote}</p>
     </div>
   </div>
 </section>

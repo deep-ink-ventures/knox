@@ -1,0 +1,111 @@
+---
+import Base from '../../layouts/Base.astro';
+import { ROUTES } from '../../i18n/config.ts';
+---
+
+<Base route="privacy" title="Privacy policy – KNOX">
+  <main id="main" class="section">
+    <div class="container legal">
+      <p class="eyebrow">KNOX – The Musical</p>
+      <h1>Privacy policy</h1>
+
+      <p>
+        This is a courtesy translation. Only the German version
+        (<a href={ROUTES.privacy.de} hreflang="de" lang="de">Datenschutzerklärung</a>) is legally
+        binding.
+      </p>
+
+      <h2>1. Controller</h2>
+      <p>
+        The controller within the meaning of the General Data Protection Regulation (GDPR) is:<br />
+        Christian Peters<br />
+        Wollankstraße 108<br />
+        13187 Berlin<br />
+        Germany<br />
+        Email: <a href="mailto:kontakt@knox-das-musical.de">kontakt@knox-das-musical.de</a>
+      </p>
+
+      <h2>2. General information on data processing</h2>
+      <p>
+        This website is a purely informational site about the musical KNOX. We process personal
+        data only to the extent technically necessary. This website uses <strong>no cookies</strong>
+        (for the locally stored language choice, see section&nbsp;6), <strong>no analytics or
+        tracking services</strong> and embeds <strong>no content from third-party servers</strong>.
+        All fonts are loaded locally from our server; in particular, no connection to Google Fonts
+        is made. The website is transmitted in encrypted form via TLS (HTTPS).
+      </p>
+
+      <h2>3. Hosting and server log files</h2>
+      <p>
+        When you visit this website, our hosting provider's server automatically processes
+        information that your browser transmits (so-called server log files): IP address, date and
+        time of access, requested file, amount of data transferred, browser type and version, and
+        operating system. This data is technically necessary to provide the website securely and
+        reliably; the legal basis is Art.&nbsp;6(1)(f) GDPR (legitimate interest). This data is not
+        merged with other data sources or analysed for marketing purposes.
+      </p>
+      <p>
+        The website is hosted by Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA.
+        Where personal data is transferred to the USA in the process, this is done on the basis of
+        a data processing agreement and the European Commission's Standard Contractual Clauses or
+        the EU-US Data Privacy Framework. Further information:
+        <a href="https://vercel.com/legal/privacy-policy" rel="noopener" target="_blank">Vercel's
+        privacy policy</a>.
+      </p>
+
+      <h2>4. Contacting us by email</h2>
+      <p>
+        If you contact us by email, we process the data you provide (email address, content of
+        your message) solely to handle your enquiry. The legal basis is Art.&nbsp;6(1)(b) GDPR
+        where your enquiry is aimed at concluding a contract, and otherwise Art.&nbsp;6(1)(f) GDPR.
+        We delete the data as soon as it is no longer required to handle your enquiry and no
+        statutory retention obligations apply.
+      </p>
+
+      <h2>5. Links to YouTube</h2>
+      <p>
+        On this website we link to videos on YouTube. These are simple external links – loading
+        our website <strong>does not transfer any data to YouTube or Google</strong>. Only when you
+        click a link do you leave our website; from that point on,
+        <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Google's
+        privacy policy</a> applies.
+      </p>
+
+      <h2>6. Language selection</h2>
+      <p>
+        This website is available in German and English. On your first visit to the homepage, a
+        script selects the appropriate language version based on your browser's language setting.
+        This check takes place exclusively in your browser; no data is transmitted to us or stored
+        in the process.
+      </p>
+      <p>
+        If you change the language yourself using the language switch, this choice (“de” or “en”)
+        is saved in your browser's local storage so that the language you chose is shown again on
+        your next visit. This information never leaves your device. The storage is strictly
+        necessary for the function you explicitly requested (Section&nbsp;25(2) no.&nbsp;2 of the
+        German Telecommunications Digital Services Data Protection Act, TDDDG). You can remove it at
+        any time by clearing the stored website data in your browser.
+      </p>
+
+      <h2>7. Your rights</h2>
+      <p>
+        You have the following rights vis-à-vis the controller with regard to your personal data:
+        access (Art.&nbsp;15 GDPR), rectification (Art.&nbsp;16 GDPR), erasure (Art.&nbsp;17 GDPR),
+        restriction of processing (Art.&nbsp;18 GDPR), data portability (Art.&nbsp;20 GDPR) and
+        objection to processing (Art.&nbsp;21 GDPR).
+      </p>
+      <p>
+        You also have the right to lodge a complaint with a data protection supervisory authority
+        (Art.&nbsp;77 GDPR). The competent authority for Berlin is the Berlin Commissioner for Data
+        Protection and Freedom of Information (Berliner Beauftragte für Datenschutz und
+        Informationsfreiheit), Alt-Moabit 59–61, 10555 Berlin.
+      </p>
+
+      <p>Last updated: November 2026</p>
+
+      <p class="back">
+        <a href={ROUTES.legalNotice.en}>Legal notice</a> · <a href={ROUTES.home.en}>← Back to the homepage</a>
+      </p>
+    </div>
+  </main>
+</Base>

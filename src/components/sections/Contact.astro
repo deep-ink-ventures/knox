@@ -1,7 +1,10 @@
 ---
-const CONTACT_EMAIL = 'kontakt@knox-das-musical.de';
+import { contentFor } from '../../i18n/index.ts';
 
-const offers = ['Skript & Leseprobe', 'Demoaufnahmen', 'Pitch-Material', 'Workshop-Mitschnitt'];
+const t = contentFor(Astro.currentLocale);
+
+const CONTACT_EMAIL = 'kontakt@knox-das-musical.de';
+const mailtoWithSubject = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(t.contact.mailSubject)}`;
 ---
 
 <section id="kontakt" class="section contact" aria-labelledby="kontakt-heading">
@@ -19,29 +22,26 @@ const offers = ['Skript & Leseprobe', 'Demoaufnahmen', 'Pitch-Material', 'Worksh
     </span>
 
     <header class="contact-heading" data-reveal>
-      <p class="eyebrow">Kontakt</p>
-      <h2 id="kontakt-heading">Bringen Sie KNOX auf&nbsp;die&nbsp;Bühne.</h2>
+      <p class="eyebrow">{t.contact.eyebrow}</p>
+      <h2 id="kontakt-heading">{t.contact.heading}</h2>
     </header>
 
-    <p class="contact-copy" data-reveal style="--reveal-delay: 100ms">
-      Sie haben Material von uns erhalten – oder möchten KNOX kennenlernen? Wir freuen uns auf das
-      Gespräch mit Produzent:innen, Theatern und Bühnen.
-    </p>
+    <p class="contact-copy" data-reveal style="--reveal-delay: 100ms">{t.contact.copy}</p>
 
-    <p class="offers-label" data-reveal style="--reveal-delay: 150ms">Auf Anfrage erhalten Sie:</p>
+    <p class="offers-label" data-reveal style="--reveal-delay: 150ms">{t.contact.offersLabel}</p>
     <ul class="offers" role="list" data-reveal style="--reveal-delay: 200ms">
-      {offers.map((offer) => <li>{offer}</li>)}
+      {t.contact.offers.map((offer) => <li>{offer}</li>)}
     </ul>
 
     <div class="contact-actions" data-reveal style="--reveal-delay: 300ms">
-      <a class="btn btn-primary" href={`mailto:${CONTACT_EMAIL}?subject=KNOX%20%E2%80%93%20Anfrage`}>
-        E-Mail schreiben
-      </a>
-      <p class="contact-or">oder direkt an <a class="contact-mail" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+      <a class="btn btn-primary" href={mailtoWithSubject}>{t.contact.cta}</a>
+      <p class="contact-or">
+        {t.contact.or} <a class="contact-mail" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      </p>
     </div>
 
     <p class="signoff" data-reveal style="--reveal-delay: 400ms">
-      Wir sagen <span>Tschitschibu Hurra!</span>
+      {t.contact.signoffLead} <span>{t.contact.signoffAccent}</span>
     </p>
   </div>
 </section>

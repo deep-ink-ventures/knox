@@ -1,58 +1,54 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 import SideQuote from '../ui/SideQuote.astro';
+import { contentFor, type FigureId } from '../../i18n/index.ts';
+
+const t = contentFor(Astro.currentLocale);
 
 interface Figure {
+  id: FigureId;
   name: string;
-  role: string;
-  text: string;
   accent: string;
   glyph: string;
   main?: boolean;
 }
 
-/* Kurztexte: aus den Flyer-Fakten entwickelt — redaktionelle Feinarbeit gern anpassen. */
+/* Rollen & Kurztexte stehen in src/i18n/content/{de,en}.ts. */
 const figures: Figure[] = [
   {
+    id: 'knox',
     name: 'Knox',
-    role: 'Der Held',
-    text: 'Ein zu großer Kopf, ein großes Herz – und plötzlich die Verantwortung für einen ganzen Planeten.',
     accent: 'var(--cyan)',
     glyph: 'M12 2 Q13 10 22 12 Q13 14 12 22 Q11 14 2 12 Q11 10 12 2 Z',
     main: true,
   },
   {
+    id: 'sophie',
     name: 'Sophie',
-    role: 'Die rebellische Schwester',
-    text: 'Hält wenig von Regeln und viel von ihrem Bruder – auch wenn sie das niemals zugeben würde.',
     accent: 'var(--magenta)',
     glyph: 'M13 2 L6 13 L11 13 L9 22 L18 9 L13 9 Z',
   },
   {
+    id: 'schnaizer',
     name: 'Dr. Schnaizer',
-    role: 'Der Tech-Guru',
-    text: 'Selbstverliebt, milliardenschwer, Besitzer einer privatisierten Galaxy. Sein neuestes Produkt: THE EARTH.',
     accent: 'var(--steel)',
     glyph: 'M12 3 L19.5 7.5 L19.5 16.5 L12 21 L4.5 16.5 L4.5 7.5 Z',
   },
   {
+    id: 'ava',
     name: 'Ava',
-    role: 'Der Superstar',
-    text: 'Schnaizers Frau, gefeiert zwischen den Sternen. Die Erde? Abgeschrieben. Ihre eigenen Pläne? Streng geheim.',
     accent: 'var(--amber)',
     glyph: 'M12 2.5 L14.6 9 L21.5 9.3 L16.1 13.6 L18 20.5 L12 16.6 L6 20.5 L7.9 13.6 L2.5 9.3 L9.4 9 Z',
   },
   {
+    id: 'hollis',
     name: 'Hollis',
-    role: 'Der Partypilot',
-    text: 'Fliegt alles, was Schub hat – und verpasst keine Party zwischen hier und der Galaxy.',
     accent: 'var(--mint)',
     glyph: 'M3 19 L21 12 L3 5 L7 12 Z',
   },
   {
+    id: 'vox',
     name: 'Vox',
-    role: 'Die KI',
-    text: 'Allgegenwärtig, hochintelligent – und hoffnungslos in Knox verknallt.',
     accent: 'var(--cyan-bright)',
     glyph: 'M12 10 A2 2 0 1 1 11.9 10 M12 6 A6 6 0 0 1 18 12 M12 2 A10 10 0 0 1 22 12',
   },
@@ -61,12 +57,12 @@ const figures: Figure[] = [
 
 <section id="figuren" class="section" aria-labelledby="figuren-heading">
   <div class="container">
-    <SectionHeading eyebrow="Die Figuren">
-      <span id="figuren-heading">Ein ungleiches Team gegen das Ende der Welt</span>
+    <SectionHeading eyebrow={t.characters.eyebrow}>
+      <span id="figuren-heading">{t.characters.heading}</span>
     </SectionHeading>
 
     <SideQuote attribution="Ava" accent="var(--amber)" align="right">
-      »Von Evolution krieg ich Migräne«
+      <Fragment set:html={t.characters.quotes.ava} />
     </SideQuote>
 
     <ul class="figure-grid" role="list">
@@ -81,23 +77,20 @@ const figures: Figure[] = [
               <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
                 <path d={figure.glyph} fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
               </svg>
-              <p class="figure-role">{figure.role}</p>
+              <p class="figure-role">{t.characters.figures[figure.id].role}</p>
             </div>
             <h3>{figure.name}</h3>
-            <p class="figure-text">{figure.text}</p>
+            <p class="figure-text">{t.characters.figures[figure.id].text}</p>
           </li>
         ))
       }
     </ul>
 
     <SideQuote attribution="Norma" accent="var(--steel)" align="left">
-      »Die anderen … sind alle verrückt!«
+      <Fragment set:html={t.characters.quotes.norma} />
     </SideQuote>
 
-    <p class="figure-footnote" data-reveal>
-      Und das ist längst nicht das ganze Universum – die vollständige Besetzung der
-      Workshop-Präsentation steht <a href="#workshop">weiter unten</a>.
-    </p>
+    <p class="figure-footnote" data-reveal set:html={t.characters.footnote} />
   </div>
 </section>
 

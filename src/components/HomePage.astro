@@ -1,0 +1,25 @@
+---
+/* Startseite – identischer Aufbau für alle Sprachen, Texte kommen aus src/i18n/content. */
+import Base from '../layouts/Base.astro';
+import Hero from './hero/Hero.astro';
+import Videos from './sections/Videos.astro';
+import Story from './sections/Story.astro';
+import Characters from './sections/Characters.astro';
+import Workshop from './sections/Workshop.astro';
+import Team from './sections/Team.astro';
+import Fotos from './sections/Fotos.astro';
+import Contact from './sections/Contact.astro';
+---
+
+<Base route="home" preloadHero={true}>
+  <main id="main">
+    <Hero />
+    <Videos />
+    <Story />
+    <Characters />
+    <Workshop />
+    <Team />
+    <Fotos />
+    <Contact />
+  </main>
+</Base>

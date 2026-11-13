@@ -1,7 +1,8 @@
 # KNOX – Das Weltraum-Musical · Pitch-Website
 
-Deutschsprachiger One-Pager für Produzent:innen, Theater und Bühnen, die Material zum Musical
-**KNOX** (Buch & Lyrics: Eva Strasser · Musik: Stephen Sundberg) erhalten haben. Die Seite rahmt
+Zweisprachiger One-Pager (Deutsch unter `/`, Englisch unter `/en/`) für Produzent:innen, Theater
+und Bühnen, die Material zum Musical **KNOX** (Buch & Lyrics: Eva Strasser · Musik: Stephen
+Sundberg) erhalten haben. Die Seite rahmt
 die Workshop-Präsentation vom 24.01.2026 (eti, Berlin) als Beleg und führt zur Kontaktaufnahme.
 
 Design-Spezifikation: [`docs/superpowers/specs/2026-06-11-knox-pitch-site-design.md`](docs/superpowers/specs/2026-06-11-knox-pitch-site-design.md)
@@ -14,6 +15,8 @@ Design-Spezifikation: [`docs/superpowers/specs/2026-06-11-knox-pitch-site-design
 | `npm run dev`     | Dev-Server auf `localhost:4321`              |
 | `npm run build`   | Produktions-Build nach `./dist/`             |
 | `npm run preview` | Build lokal ansehen                          |
+| `npm test`        | Unit-Tests (DE/EN-Texte vollständig & gleich strukturiert) |
+| `npm run test:e2e`| Playwright-Tests: Spracherkennung, Umschalter, hreflang (Chromium, Firefox, WebKit) |
 
 Deploy z. B. mit `vercel` (statisches Astro-Projekt, keine Server-Funktionen nötig).
 
@@ -31,18 +34,36 @@ Noch offen / Entwürfe:
 - [ ] **DNS**: `knox-das-musical.de` registrieren/aufschalten und mit dem Hosting verbinden
 - [ ] Hosting-Abschnitt der Datenschutzerklärung prüfen, falls nicht bei Vercel gehostet wird
 
+## Zweisprachigkeit
+
+- **Texte** stehen ausschließlich in `src/i18n/content/de.ts` und `en.ts` (Typ: `types.ts`).
+  Neue Texte immer in beiden Dateien ergänzen – `npm test` schlägt sonst fehl. Song-Titel bleiben
+  in beiden Sprachen im Original.
+- **Seiten-Gegenstücke** (`/impressum/` ↔ `/en/legal-notice/` usw.) sind in `src/i18n/config.ts`
+  unter `ROUTES` hinterlegt; daraus entstehen canonical, `hreflang` und der Sprachumschalter.
+- **Spracherkennung**: Nur beim Einstieg über `/` entscheidet ein kleines Inline-Skript
+  (`src/components/i18n/LanguageRedirect.astro`) anhand der Browsersprache; ohne Deutsch landet man
+  auf `/en/`. Crawler werden nie umgeleitet, Klicks innerhalb der Seite ebenfalls nicht. Eine
+  bewusste Wahl über den Umschalter wird im `localStorage` gemerkt (in der Datenschutzerklärung,
+  Abschnitt 6, beschrieben).
+- Die englischen Rechtsseiten sind als unverbindliche Übersetzung gekennzeichnet; maßgeblich ist
+  die deutsche Fassung.
+
 ## Struktur
 
 ```text
 src/
 ├── components/
 │   ├── hero/Hero.astro          # KI-Artwork als Hintergrund, Logotype, Bereichs-Buttons
+│   ├── i18n/                    # Sprachumschalter + Browser-Spracherkennung
+│   ├── HomePage.astro           # Startseite, von / und /en/ gemeinsam genutzt
 │   ├── sections/                # Videos, Story (Synopsis), Characters, Workshop, Team (Vita), Fotos, Contact
 │   ├── ui/SectionHeading.astro
 │   ├── Starfield.astro          # Canvas-Sternenfeld (~2 kb, reduced-motion-aware)
 │   └── Footer.astro
-├── layouts/Base.astro           # Fonts (selbst gehostet, DSGVO), Meta/OG, Scroll-Reveals
-├── pages/                       # index + impressum + datenschutz
+├── i18n/                        # Sprachkonfiguration, Routen, Texte (content/de.ts, content/en.ts)
+├── layouts/Base.astro           # Fonts (selbst gehostet, DSGVO), Meta/OG/hreflang, Footer, Scroll-Reveals
+├── pages/                       # index + impressum + datenschutz, englisch unter pages/en/
 └── styles/                      # tokens.css (Design-Tokens), global.css
 ```
 

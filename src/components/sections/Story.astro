@@ -1,64 +1,40 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 import SideQuote from '../ui/SideQuote.astro';
+import { contentFor } from '../../i18n/index.ts';
+
+const t = contentFor(Astro.currentLocale);
 ---
 
 <section id="synopsis" class="section" aria-labelledby="synopsis-heading">
   <div class="container">
-    <SectionHeading eyebrow="Synopsis">
+    <SectionHeading eyebrow={t.story.eyebrow}>
       <span id="synopsis-heading">
-        Die Galaxy hat einen neuen Planeten: <span class="the-earth">The&nbsp;Earth.</span>
+        {t.story.headingLead} <span class="the-earth">{t.story.headingAccent}</span>
       </span>
     </SectionHeading>
 
     <div class="story-grid">
       <div class="story-prose" data-reveal>
-        <p>
-          In einer nicht allzu fernen Zukunft hat Dr.&nbsp;Schnaizer – selbstverliebter Tech-Guru
-          und reichster Mann zwischen den Sternen – seine eigene privatisierte Galaxy aufgebaut:
-          glitzernde Raumstationen, künstliche Welten, alles im Angebot. Jetzt fehlt nur noch das
-          Krönungsstück: <em>THE&nbsp;EARTH</em>, ein brandneuer Planet ganz nach seinem Geschmack.
-          Gut, es gibt da schon etwas in der Richtung – die Erde nämlich. Aber die ist in seinen
-          Augen ein <em>failed planet</em> und hat ihre besten Zeiten hinter sich.
-        </p>
-        <p>
-          Dumm nur: Auf diesem <em>failed planet</em> leben Menschen. Zum Beispiel Knox – ein
-          ungewöhnlicher Held mit einem zu großen Kopf und einem noch größeren Herzen. Als er hinter
-          Schnaizers Pläne kommt, muss er über sich hinauswachsen: Zusammen mit seiner rebellischen
-          Schwester Sophie, dem Partypiloten Hollis und der KI Vox, die hoffnungslos in ihn
-          verknallt ist, nimmt er den Kampf um die echte Erde auf.
-        </p>
-        <p>
-          Zwischen Discokugeln und Raumstationen mischt auch Superstar Ava mit, Schnaizers
-          schillernde Frau. Die Erde? Abgeschrieben, findet sie – verfolgt dabei allerdings noch
-          ganz eigene Pläne&nbsp;…
-        </p>
-        <p>
-          KNOX ist ein humorvolles und herzergreifendes Musical über Familie, Mut und die Frage, ob
-          „dieser beschissene Planet“ es nicht doch wert ist, gerettet zu werden. Spoiler: Ist er.
-        </p>
+        {t.story.paragraphs.map((paragraph) => <p set:html={paragraph} />)}
       </div>
 
       <aside class="story-aside">
         <SideQuote attribution="Dr. Schnaizer" accent="var(--cyan)" align="right">
-          »Die Erde? Ein <em>failed planet</em>.«
+          <Fragment set:html={t.story.quotes.schnaizer} />
         </SideQuote>
 
         <div class="origin panel" data-reveal style="--reveal-delay: 200ms">
-          <h3>Wie alles begann</h3>
-          <p>
-            Es waren einmal während Corona eine Drehbuchautorin und ein Musiker, die viel zu Hause
-            saßen – und schließlich beschlossen, gemeinsam ein Musical zu schreiben. Aus einer
-            dystopischen, preisgekrönten Kurzgeschichte wurde KNOX.
-          </p>
+          <h3>{t.story.origin.title}</h3>
+          <p>{t.story.origin.text}</p>
         </div>
 
         <SideQuote attribution="Knox" accent="var(--cyan-bright)" align="right">
-          »Wir haben den besten place in space schon längst gefunden«
+          <Fragment set:html={t.story.quotes.knox} />
         </SideQuote>
 
         <SideQuote attribution="Vox" accent="var(--cyan-bright)" align="left">
-          »Hier ist es so viel <em>besser</em> als auf der Erde!«
+          <Fragment set:html={t.story.quotes.vox} />
         </SideQuote>
       </aside>
     </div>
@@ -87,7 +63,8 @@ import SideQuote from '../ui/SideQuote.astro';
     max-width: 58ch;
   }
 
-  .story-prose em {
+  /* per set:html eingefügtes Markup trägt kein Scope-Attribut → :global */
+  .story-prose :global(em) {
     color: var(--cyan-bright);
     font-style: italic;
   }

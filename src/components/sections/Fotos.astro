@@ -1,42 +1,42 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
+import { contentFor, type FotoSlug } from '../../i18n/index.ts';
+
+const t = contentFor(Astro.currentLocale);
 
 /* Fotos der Workshop-Präsentation, selbst gehostet unter public/assets/img/fotos/.
    Gemischte Hoch-, Quer- und Quadratformate – das Masonry-Raster bewahrt jedes
-   Seitenverhältnis, damit keine Gesichter beschnitten werden. */
-const fotos = [
-  ['live-band', 'Die Live-Band mit Gitarre und Keyboard bei der Workshop-Präsentation', 800, 1423],
-  ['ensemble-buehne', 'Das Ensemble auf der Bühne bei der Workshop-Präsentation', 800, 534],
-  ['kostuemprobe', 'Kostümprobe: Anprobe des Kopfschmucks', 800, 1067],
-  ['ensemble-lesung', 'Das Ensemble bei der szenischen Lesung an den Notenständern', 800, 1067],
-  ['team-selfie', 'Gruppenselfie des KNOX-Teams nach der Präsentation', 800, 800],
-  ['backstage-schlagzeug', 'Backstage an Textbuch und Schlagzeug', 800, 1067],
-  ['ensemble-gruppe', 'Gruppenfoto des Ensembles auf der Bühne', 800, 534],
-  ['kuenstler-backstage', 'Zwei Mitwirkende mit Kaffeebechern nach der Präsentation', 800, 1067],
-  ['textbuch', 'Das Textbuch von „Knox – Ein neues Musical“, Berlin Januar 2026', 800, 1423],
+   Seitenverhältnis, damit keine Gesichter beschnitten werden. Alt-Texte: src/i18n/content. */
+const fotos: [FotoSlug, number, number][] = [
+  ['live-band', 800, 1423],
+  ['ensemble-buehne', 800, 534],
+  ['kostuemprobe', 800, 1067],
+  ['ensemble-lesung', 800, 1067],
+  ['team-selfie', 800, 800],
+  ['backstage-schlagzeug', 800, 1067],
+  ['ensemble-gruppe', 800, 534],
+  ['kuenstler-backstage', 800, 1067],
+  ['textbuch', 800, 1423],
 ];
 ---
 
 <section id="fotos" class="section" aria-labelledby="fotos-heading">
   <div class="container">
-    <SectionHeading eyebrow="Fotos">
-      <span id="fotos-heading">Aus der Welt von KNOX</span>
+    <SectionHeading eyebrow={t.fotos.eyebrow}>
+      <span id="fotos-heading">{t.fotos.heading}</span>
     </SectionHeading>
 
-    <p class="fotos-lead" data-reveal>
-      Eindrücke von der Workshop-Präsentation am 24. Januar 2026 im eti Berlin – von der Probe
-      über die Bühne bis backstage.
-    </p>
+    <p class="fotos-lead" data-reveal>{t.fotos.lead}</p>
 
     <ul class="fotos-grid" role="list">
       {
-        fotos.map(([slug, alt, width, height], index) => (
+        fotos.map(([slug, width, height], index) => (
           <li class="foto panel" data-reveal style={`--reveal-delay: ${(index % 3) * 70}ms`}>
             <img
               src={`/assets/img/fotos/${slug}.webp`}
               width={width}
               height={height}
-              alt={alt}
+              alt={t.fotos.alts[slug]}
               loading="lazy"
             />
           </li>
@@ -44,7 +44,7 @@ const fotos = [
       }
     </ul>
 
-    <p class="fotos-credit" data-reveal>Fotos: 101united und das KNOX-Team.</p>
+    <p class="fotos-credit" data-reveal>{t.fotos.credit}</p>
   </div>
 </section>
 

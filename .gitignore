@@ -26,3 +26,7 @@ pnpm-debug.log*
 # QA artifacts
 qa/
 .playwright-mcp/
+
+# Playwright
+test-results/
+playwright-report/

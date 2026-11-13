@@ -1,34 +1,29 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
+import { contentFor, type MemberId } from '../../i18n/index.ts';
 
-/* Finale Viten (Stand 15.06.2026). */
-const team = [
-  {
-    name: 'Eva Strasser',
-    role: 'Buch & Lyrics',
-    text: 'Ist seit Jahren auf diversen Berliner Lesebühnen unterwegs. Studierte Philosophie, Theater-, Film- und Medienwissenschaften in Wien und Berlin und Drehbuch an der dffb Berlin. Schreibt Drehbücher, Grusel-Hörspiele, Kurzgeschichten und Prosa. 2025 erschien ihr Roman „Wildhof“ im Verlag Klaus Wagenbach. Bei der Workshop-Präsentation lieh sie der KI Vox ihre Stimme. „Knox“ ist ihr erstes Musical.',
-  },
-  {
-    name: 'Stephen Sundberg',
-    role: 'Musik',
-    text: 'Von Haus aus Schlagzeuger, Bassist und Pianist. Seit der Schulzeit Schlagzeuger in unzähligen Rockbands. Sänger, Texter, Komponist und Bassist des Kammerpop-Projekts „fool“, mit dem er das Album „Sentimental Stuff“ produzierte. Live-Drummer der Electro-Pop-Formation „KY“. Außerdem ist er seit rund 30 Jahren als Comedian Teil des preisgekrönten Duos „Edd und Lefou“ und war in der renommierten Dinnershow „Palazzo“ sowie auf internationalen Festivals – u. a. in Frankreich, Korea und Singapur – auf der Bühne zu sehen. „Knox“ ist sein erstes Musical.',
-  },
+const t = contentFor(Astro.currentLocale);
+
+/* Finale Viten (Stand 15.06.2026) – Texte in src/i18n/content/{de,en}.ts. */
+const team: { id: MemberId; name: string }[] = [
+  { id: 'eva', name: 'Eva Strasser' },
+  { id: 'stephen', name: 'Stephen Sundberg' },
 ];
 ---
 
 <section id="vita" class="section" aria-labelledby="vita-heading">
   <div class="container">
-    <SectionHeading eyebrow="Vita">
-      <span id="vita-heading">Zwei Köpfe, ein Universum</span>
+    <SectionHeading eyebrow={t.team.eyebrow}>
+      <span id="vita-heading">{t.team.heading}</span>
     </SectionHeading>
 
     <div class="team-grid">
       {
         team.map((person, index) => (
           <article class="member panel" data-reveal style={`--reveal-delay: ${index * 120}ms`}>
-            <p class="member-role eyebrow">{person.role}</p>
+            <p class="member-role eyebrow">{t.team.members[person.id].role}</p>
             <h3>{person.name}</h3>
-            <p class="member-text">{person.text}</p>
+            <p class="member-text">{t.team.members[person.id].text}</p>
           </article>
         ))
       }

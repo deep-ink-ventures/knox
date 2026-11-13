@@ -1,20 +1,23 @@
+---
+import { contentFor } from '../../i18n/index.ts';
+
+const t = contentFor(Astro.currentLocale);
+---
+
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-inner container">
     <h1 id="hero-title" class="hero-title rise" style="--rise: 1">KNOX</h1>
-    <p class="hero-sub eyebrow rise" style="--rise: 2">Das Musical</p>
-    <p class="hero-credits rise" style="--rise: 3">
-      Humorvoll, herzergreifend, galaktisch – von <strong>Eva Strasser</strong> (Buch &amp; Lyrics)
-      und <strong>Stephen Sundberg</strong> (Musik).
-    </p>
-    <nav class="hero-nav rise" style="--rise: 4" aria-label="Bereiche der Seite">
-      <a class="btn btn-primary" href="#videos">Videos</a>
-      <a class="btn btn-ghost" href="#synopsis">Synopsis</a>
-      <a class="btn btn-ghost" href="#vita">Vita</a>
-      <a class="btn btn-ghost" href="#fotos">Fotos</a>
+    <p class="hero-sub eyebrow rise" style="--rise: 2">{t.hero.tagline}</p>
+    <p class="hero-credits rise" style="--rise: 3" set:html={t.hero.credits} />
+    <nav class="hero-nav rise" style="--rise: 4" aria-label={t.hero.navLabel}>
+      <a class="btn btn-primary" href="#videos">{t.hero.nav.videos}</a>
+      <a class="btn btn-ghost" href="#synopsis">{t.hero.nav.synopsis}</a>
+      <a class="btn btn-ghost" href="#vita">{t.hero.nav.vita}</a>
+      <a class="btn btn-ghost" href="#fotos">{t.hero.nav.fotos}</a>
     </nav>
   </div>
 
-  <a class="scroll-cue rise" style="--rise: 5" href="#videos" aria-label="Zu den Videos scrollen">
+  <a class="scroll-cue rise" style="--rise: 5" href="#videos" aria-label={t.hero.scrollCue}>
     <span aria-hidden="true">↓</span>
   </a>
 </section>
@@ -93,7 +96,8 @@
     color: var(--ink-dim);
   }
 
-  .hero-credits strong {
+  /* per set:html eingefügtes Markup trägt kein Scope-Attribut → :global */
+  .hero-credits :global(strong) {
     color: var(--ink);
     font-weight: 600;
   }

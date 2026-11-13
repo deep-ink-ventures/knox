@@ -1,9 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import Footer from '../components/Footer.astro';
+import { ROUTES } from '../i18n/config.ts';
 ---
 
-<Base title="Datenschutzerklärung – KNOX">
+<Base route="privacy" title="Datenschutzerklärung – KNOX">
   <main id="main" class="section">
     <div class="container legal">
       <p class="eyebrow">KNOX – Das Musical</p>
@@ -22,7 +22,8 @@ import Footer from '../components/Footer.astro';
       <p>
         Diese Website ist eine rein informative Seite zum Musical KNOX. Wir verarbeiten
         personenbezogene Daten nur, soweit dies technisch erforderlich ist. Diese Website
-        verwendet <strong>keine Cookies</strong>, <strong>keine Analyse- oder Tracking-Dienste</strong>
+        verwendet <strong>keine Cookies</strong> (zur lokal gespeicherten Sprachauswahl siehe
+        Abschnitt&nbsp;6), <strong>keine Analyse- oder Tracking-Dienste</strong>
         und bindet <strong>keine Inhalte von Drittservern</strong> ein. Alle Schriftarten werden
         lokal von unserem Server geladen; es findet insbesondere keine Verbindung zu Google
         Fonts statt. Die Übertragung der Website erfolgt verschlüsselt über TLS (HTTPS).
@@ -68,7 +69,23 @@ import Footer from '../components/Footer.astro';
         Datenschutzerklärung von Google</a>.
       </p>
 
-      <h2>6. Ihre Rechte</h2>
+      <h2>6. Sprachauswahl</h2>
+      <p>
+        Diese Website ist auf Deutsch und Englisch verfügbar. Beim ersten Aufruf der Startseite
+        wählt ein Skript anhand der Spracheinstellung Ihres Browsers die passende Sprachversion
+        aus. Diese Prüfung findet ausschließlich in Ihrem Browser statt; dabei werden keine Daten
+        an uns übermittelt oder gespeichert.
+      </p>
+      <p>
+        Wechseln Sie die Sprache selbst über den Sprachumschalter, wird diese Auswahl („de“ oder
+        „en“) im lokalen Speicher Ihres Browsers (Local Storage) abgelegt, damit Ihnen beim
+        nächsten Besuch wieder die gewünschte Sprache angezeigt wird. Diese Information verlässt
+        Ihr Gerät nicht. Die Speicherung ist für die von Ihnen ausdrücklich gewünschte Funktion
+        unbedingt erforderlich (§&nbsp;25 Abs.&nbsp;2 Nr.&nbsp;2 TDDDG). Sie können sie jederzeit
+        entfernen, indem Sie die gespeicherten Websitedaten in Ihrem Browser löschen.
+      </p>
+
+      <h2>7. Ihre Rechte</h2>
       <p>
         Ihnen stehen gegenüber dem Verantwortlichen die folgenden Rechte hinsichtlich Ihrer
         personenbezogenen Daten zu: Auskunft (Art.&nbsp;15 DSGVO), Berichtigung (Art.&nbsp;16
@@ -82,12 +99,11 @@ import Footer from '../components/Footer.astro';
         und Informationsfreiheit, Alt-Moabit 59–61, 10555 Berlin.
       </p>
 
-      <p>Stand: Juni 2026</p>
+      <p>Stand: November 2026</p>
 
       <p class="back">
-        <a href="/impressum">Impressum</a> · <a href="/">← Zurück zur Startseite</a>
+        <a href={ROUTES.legalNotice.de}>Impressum</a> · <a href={ROUTES.home.de}>← Zurück zur Startseite</a>
       </p>
     </div>
   </main>
-  <Footer />
 </Base>

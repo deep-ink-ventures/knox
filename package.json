@@ -9,12 +9,17 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "node --experimental-strip-types --test 'tests/unit/**/*.test.ts'",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@fontsource/michroma": "^5.2.8",
     "@fontsource/sora": "^5.2.8",
     "@fontsource/unbounded": "^5.2.8",
     "astro": "^6.4.6"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
   }
 }
