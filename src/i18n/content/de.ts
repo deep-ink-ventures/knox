@@ -107,11 +107,11 @@ const de: SiteContent = {
     members: {
       eva: {
         role: 'Buch & Lyrics',
-        text: 'Ist seit Jahren auf diversen Berliner Lesebühnen unterwegs. Studierte Philosophie, Theater-, Film- und Medienwissenschaften in Wien und Berlin und Drehbuch an der dffb Berlin. Schreibt Drehbücher, Grusel-Hörspiele, Kurzgeschichten und Prosa. 2025 erschien ihr Roman „Wildhof“ im Verlag Klaus Wagenbach. Bei der Workshop-Präsentation lieh sie der KI Vox ihre Stimme. „Knox“ ist ihr erstes Musical.',
+        text: 'Ist seit Jahren auf diversen Berliner Lesebühnen unterwegs. Studierte Philosophie, Theater-, Film- und Medienwissenschaften in Wien und Berlin und Drehbuch an der dffb Berlin. Schreibt Drehbücher, Grusel-Hörspiele, Kurzgeschichten und Prosa. 2025 erschien ihr Roman „Wildhof“ im Verlag Klaus Wagenbach. Bei der Workshop-Präsentation lieh sie der KI Vox ihre Stimme.',
       },
       stephen: {
         role: 'Musik',
-        text: 'Von Haus aus Schlagzeuger, Bassist und Pianist. Seit der Schulzeit Schlagzeuger in unzähligen Rockbands. Sänger, Texter, Komponist und Bassist des Kammerpop-Projekts „fool“, mit dem er das Album „Sentimental Stuff“ produzierte. Live-Drummer der Electro-Pop-Formation „KY“. Außerdem ist er seit rund 30 Jahren als Comedian Teil des preisgekrönten Duos „Edd und Lefou“ und war in der renommierten Dinnershow „Palazzo“ sowie auf internationalen Festivals – u. a. in Frankreich, Korea und Singapur – auf der Bühne zu sehen. „Knox“ ist sein erstes Musical.',
+        text: 'Von Haus aus Schlagzeuger, Bassist und Pianist. Seit der Schulzeit Schlagzeuger in unzähligen Rockbands. Sänger, Texter, Komponist und Bassist des Kammerpop-Projekts „fool“, mit dem er das Album „Sentimental Stuff“ produzierte. Live-Drummer der Electro-Pop-Formation „KY“. Außerdem ist er seit rund 30 Jahren als Comedian Teil des preisgekrönten Duos „Edd und Lefou“ und war in der renommierten Dinnershow „Palazzo“ sowie auf internationalen Festivals – u. a. in Frankreich, Korea und Singapur – auf der Bühne zu sehen.',
       },
     },
   },

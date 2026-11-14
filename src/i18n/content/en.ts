@@ -29,7 +29,7 @@ const en: SiteContent = {
     heading: 'Songs full of punch, heart and sparkle',
     titleQuote: { open: '“', close: '”' },
     watchHint: '– watch the video on YouTube (opens in a new tab)',
-    quote: '“Turbulence? That’s just the beat dropping.”',
+    quote: '“Turbulence won’t stop the dance”',
     note: 'All videos open on YouTube in a new tab. The songs are sung in German. Demo recordings and sheet music are available <a href="#kontakt">on request</a>.',
   },
   story: {
@@ -109,11 +109,11 @@ const en: SiteContent = {
     members: {
       eva: {
         role: 'Book & lyrics',
-        text: 'For years she has been a regular on Berlin’s live-literature stages. She studied philosophy, theatre, film and media studies in Vienna and Berlin, and screenwriting at the dffb, the German Film and Television Academy Berlin. She writes screenplays, horror audio dramas, short stories and prose; her novel “Wildhof” was published by Verlag Klaus Wagenbach in 2025. At the workshop presentation she gave her voice to the AI Vox. “Knox” is her first musical.',
+        text: 'For years she has been a regular on Berlin’s live-literature stages. She studied philosophy, theatre, film and media studies in Vienna and Berlin, and screenwriting at the dffb, the German Film and Television Academy Berlin. She writes screenplays, horror audio dramas, short stories and prose; her novel “Wildhof” was published by Verlag Klaus Wagenbach in 2025. At the workshop presentation she gave her voice to the AI Vox.',
       },
       stephen: {
         role: 'Music',
-        text: 'A drummer, bassist and pianist by trade, he has played drums in countless rock bands since his school days. He is the singer, lyricist, composer and bassist of the chamber-pop project “fool”, with which he produced the album “Sentimental Stuff”, and the live drummer of the electro-pop outfit “KY”. For around 30 years he has also been one half of the award-winning comedy duo “Edd und Lefou”, appearing in the renowned dinner show “Palazzo” and at international festivals – including in France, Korea and Singapore. “Knox” is his first musical.',
+        text: 'A drummer, bassist and pianist by trade, he has played drums in countless rock bands since his school days. He is the singer, lyricist, composer and bassist of the chamber-pop project “fool”, with which he produced the album “Sentimental Stuff”, and the live drummer of the electro-pop outfit “KY”. For around 30 years he has also been one half of the award-winning comedy duo “Edd und Lefou”, appearing in the renowned dinner show “Palazzo” and at international festivals – including in France, Korea and Singapore.',
       },
     },
   },
